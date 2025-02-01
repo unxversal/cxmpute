@@ -1,0 +1,26 @@
+{
+  "canisters": {
+    "cxmpute_backend": {
+      "main": "src/cxmpute_backend/main.mo",
+      "type": "motoko"
+    },
+    "cxmpute_frontend": {
+      "dependencies": [
+        "cxmpute_backend"
+      ],
+      "source": [
+        "src/cxmpute_frontend/dist"
+      ],
+      "type": "assets",
+      "workspace": "cxmpute_frontend"
+    }
+  },
+  "defaults": {
+    "build": {
+      "args": "",
+      "packtool": ""
+    }
+  },
+  "output_env_file": ".env",
+  "version": 1
+}

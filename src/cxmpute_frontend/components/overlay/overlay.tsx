@@ -6,19 +6,18 @@ export const Overlay: React.FC = () => {
       {/* Center text */}
       <div>
         <div
-          className="popups"
+          className= {styles.popups2}
+          id='aboutPopup'
           style={{
             position: "absolute",
             top: 0,
             left: 0,
             width: "100vw",
             height: "100%",
-            pointerEvents: "none",
             color: "white",
           }}
         >
           <div
-            className="popups aboutPopup background"
             style={{
               width: "100vw",
               height: "90vh",
@@ -32,7 +31,8 @@ export const Overlay: React.FC = () => {
             }}
           >
             <div>
-              <div className="hheader" style={{ fontFamily: "Potra", fontSize: "8vw" }}>CXMPUTE</div>
+              <div className="hheader" style={{ fontFamily: "Potra",               pointerEvents: "none",
+fontSize: "8vw" }}>CXMPUTE</div>
               <br />
 
               <div
@@ -40,6 +40,8 @@ export const Overlay: React.FC = () => {
                   fontFamily: "Helvetica Neue",
                   fontSize: "15px",
                   fontWeight: "200",
+                  pointerEvents: "none",
+
                 }}
               >
                 Decentralized Compute Infrastructure by{" "}
@@ -54,6 +56,7 @@ export const Overlay: React.FC = () => {
                   textAlign: "center",
                   padding: "5px",
                   maxWidth: "90vw",
+                  pointerEvents: "none",
                 }}
               >
                 AI Training · AI Inference · Decentralized Storage · Decentralized Compute · Web3-Native Webdev · AI Agents · Verifiable Agents · Decentralized Research

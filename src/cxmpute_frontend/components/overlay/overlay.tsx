@@ -33,6 +33,8 @@ export const Overlay: React.FC = () => {
           >
             <div>
               <div className="hheader" style={{ fontFamily: "Potra", fontSize: "8vw" }}>CXMPUTE</div>
+              <br />
+
               <div
                 style={{
                   fontFamily: "Helvetica Neue",
@@ -44,13 +46,14 @@ export const Overlay: React.FC = () => {
                 <span style={{ fontFamily: "Anurati" }}>UNXVERSAL</span>
               </div>
               <br />
-              <br />
               <div
                 style={{
                   fontFamily: "Helvetica Neue",
                   fontSize: "15px",
                   fontWeight: "200",
                   textAlign: "center",
+                  padding: "5px",
+                  maxWidth: "90vw",
                 }}
               >
                 AI Training · AI Inference · Decentralized Storage · Decentralized Compute · Web3-Native Webdev · AI Agents · Verifiable Agents · Decentralized Research

@@ -1,8 +1,8 @@
 import * as React from 'react';
-
+import styles from './overlay.module.css';
 export const Overlay: React.FC = () => {
   return (
-    <div>
+    <div className={styles.overlay}>
       {/* Center text */}
       <div>
         <div
@@ -13,7 +13,6 @@ export const Overlay: React.FC = () => {
             left: 0,
             width: "100%",
             height: "100%",
-            padding: 40,
             pointerEvents: "none",
             color: "white",
           }}
@@ -32,7 +31,7 @@ export const Overlay: React.FC = () => {
             }}
           >
             <div>
-              <div className="hheader">CXMPUTE</div>
+              <div className="hheader" style={{ fontFamily: "Potra", fontSize: "8vw" }}>CXMPUTE</div>
               <div
                 style={{
                   fontFamily: "Helvetica Neue",
@@ -50,6 +49,7 @@ export const Overlay: React.FC = () => {
                   fontFamily: "Helvetica Neue",
                   fontSize: "15px",
                   fontWeight: "200",
+                  textAlign: "center",
                 }}
               >
                 AI Training · AI Inference · Decentralized Storage · Decentralized Compute · Web3-Native Webdev · AI Agents · Verifiable Agents · Decentralized Research

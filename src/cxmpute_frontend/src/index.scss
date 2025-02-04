@@ -1,6 +1,36 @@
+@font-face {
+  font-family: Anurati;
+  src: url("./Anurati-Regular.otf") format("opentype");
+}
+
+@font-face {
+  font-family: BoteraStencil;
+  src: url("./Botera-RegularStencil.otf") format("opentype");
+}
+
+@font-face {
+  font-family: Potra;
+  src: url("./Potra.otf") format("opentype");
+}
+
+main{
+  display: inline-block;
+  width: 200vw;
+  height: 100vh;
+  overflow-y: hidden;
+  padding: 0;
+
+}
+
+
+
 body {
-  font-family: sans-serif;
+  font-family: 'Helvetica Neue';
+  font-weight: 200;
+  color: white;
   font-size: 1.5rem;
+  margin: 0;
+
 }
 
 img {
@@ -34,4 +64,42 @@ button[type="submit"] {
 
 #greeting:empty {
   display: none;
+}
+
+#spiralcontainer {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+}
+
+#overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+}
+
+#rightcontent{
+  height: 100%;
+  width: 100vw;
+  background-color: #101010;
+  margin: 0;
+  color: white;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+#right{
+  height: 100%;
+  width: 100%;
+  background-color: black;
+  margin: 0;
+  color: white;
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
 }

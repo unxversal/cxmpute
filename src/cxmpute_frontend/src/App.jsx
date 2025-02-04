@@ -16,25 +16,35 @@ function App() {
     return false;
   }
 
+  function scrollToRightPage() {
+    // Scroll horizontally to the right section (if your layout is using 200vw as width)
+    window.scrollTo({
+      left: window.innerWidth,  // Scroll to the right page (200vw width means one full screen shift)
+      behavior: 'smooth'  // Smooth scroll effect
+    });
+  }
+  
+
   return (
     <main>
 
       <div id="left">
 
         <div id="spiralcontainer">
+          <button id="scrollButton" onClick={() => scrollToRightPage()}>》</button>
           <Spiral />
         </div>
 
-        <div id="overlay">
+        {/* <div id="overlay">
           <form action="#" onSubmit={handleSubmit}>
             <label htmlFor="name">Enter your name: &nbsp;</label>
             <input id="name" alt="Name" type="text" />
             <button type="submit">Click Me!</button>
           </form>
           <section id="greeting">{greeting}</section>
-        </div>
+        </div> */}
 
-        {home && <Overlay />}
+        {home && <div id="overlay"><Overlay /></div>}
 
       </div>
 

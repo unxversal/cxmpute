@@ -11,7 +11,7 @@ export const Overlay: React.FC = () => {
             position: "absolute",
             top: 0,
             left: 0,
-            width: "100%",
+            width: "100vw",
             height: "100%",
             pointerEvents: "none",
             color: "white",
@@ -20,12 +20,13 @@ export const Overlay: React.FC = () => {
           <div
             className="popups aboutPopup background"
             style={{
-              width: "90vw",
+              width: "100vw",
               height: "90vh",
               borderRadius: "3px",
               padding: "10px",
               display: "flex",
-              justifyContent: "space-evenly",
+              justifyContent: "center",
+              alignItems: "center",
               flexDirection: "column",
               textAlign: "center",
             }}
@@ -69,15 +70,18 @@ export const Overlay: React.FC = () => {
         }}
       >
         <ul
+          className="footer"
           style={{
             flex: "1 1 0%",
             fontSize: 12,
             lineHeight: "1em",
             textAlign: "right",
             color: "white",
+            listStyle: "none",
           }}
         >
           {/* Add list items here if needed */}
+          <li>ABOUT</li>
         </ul>
       </footer>
     </div>

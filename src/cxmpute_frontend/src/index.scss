@@ -96,6 +96,8 @@ button[type="submit"] {
   display: flex;
   justify-content: center;
   align-items: center;
+  position: relative;
+
 }
 
 #right{
@@ -122,6 +124,20 @@ button[type="submit"] {
   transition: all 0.2s ease-in-out;
 }
 
+#scrollButton2 {
+  position: absolute;
+  top: calc(50vh - 20px);  /* Adjust to place the button where you want */
+  right: 10px;
+  font-size: 2rem;
+  color: white;
+  border: none;
+  cursor: pointer;
+  z-index: 999; /* Ensure the button is above the spiral */
+  background: transparent;
+  transition: all 0.2s ease-in-out;
+}
+
+#scrollButton2:hover,
 #scrollButton:hover {
   scale: 0.95;
 }

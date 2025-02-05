@@ -1,7 +1,8 @@
-import { useState } from 'react';
+import { useState, useRef } from 'react';
 import { cxmpute_backend } from 'declarations/cxmpute_backend';
 import Spiral from '../components/3dspiral/3dspiral';
 import Overlay from '../components/overlay/overlay';
+import Dashboard from '../components/dashboard/dashboard';
 
 function App() {
   const [greeting, setGreeting] = useState('');
@@ -22,7 +23,21 @@ function App() {
       left: window.innerWidth,  // Scroll to the right page (200vw width means one full screen shift)
       behavior: 'smooth'  // Smooth scroll effect
     });
+
+    setHome(false);
   }
+
+  function scrollToLeftPage() {
+    // Scroll horizontally to the right section (if your layout is using 200vw as width)
+    window.scrollTo({
+      left: -window.innerWidth,  // Scroll to the right page (200vw width means one full screen shift)
+      behavior: 'smooth'  // Smooth scroll effect
+    });
+
+    setHome(true);
+  }
+
+  
   
 
   return (
@@ -31,7 +46,7 @@ function App() {
       <div id="left">
 
         <div id="spiralcontainer">
-          <button id="scrollButton" onClick={() => scrollToRightPage()}>》</button>
+          {home && <button id="scrollButton" onClick={() => scrollToRightPage()}>》</button>}
           <Spiral />
         </div>
 
@@ -44,15 +59,16 @@ function App() {
           <section id="greeting">{greeting}</section>
         </div> */}
 
-        {home && <div id="overlay"><Overlay /></div>}
+      <div id="overlay"><Overlay /></div>
 
       </div>
 
       <div id="right">
+       
         <div id="rightbalancer"></div>
         <div id="rightcontent">
-          <h1>cxmpute</h1>
-          <p>the decentralized backend for the web</p>
+          {!home && <button id="scrollButton2" onClick={() => scrollToLeftPage()}>《</button>}
+          <Dashboard />
         </div>
       </div>
       

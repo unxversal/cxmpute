@@ -66,7 +66,7 @@ fontSize: "8vw" }}>CXMPUTE</div>
         </div>
       </div>
 
-      <footer
+      {/* <footer
         style={{
           position: "absolute",
           bottom: 20,
@@ -86,10 +86,9 @@ fontSize: "8vw" }}>CXMPUTE</div>
             listStyle: "none",
           }}
         >
-          {/* Add list items here if needed */}
           <li>ABOUT</li>
         </ul>
-      </footer>
+      </footer> */}
     </div>
   );
 };

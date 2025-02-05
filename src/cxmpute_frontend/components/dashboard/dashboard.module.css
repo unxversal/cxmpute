@@ -1,8 +1,50 @@
-.dashboard{
+.container{
     width: 100vw;
     height: 100vh;
+
+}
+
+.header{
+    width: 100vw;
+    display: flex;
+    padding: 20px;
+    justify-content: space-between;
+    align-items: center;
+    top: 0;
+    left: 0;
+    position: relative;
+    border-bottom: 1px solid #848484;
+}
+
+.headerLeft{
+    font-family: Anurati;
+    font-size: 2.5vw;
+}
+
+.headerRight{
+    margin-right: 40px
+}
+
+.headerRight button{
+    background-color: transparent;
+    border: 1px solid #848484;
+    cursor: pointer;
+    color: white;
+    transition: all 0.2s ease-in-out;
+    padding:20px;
+    font-weight: 300;
+}
+
+.headerRight button:hover{
+    background-color: white;
+    color: #101010;
+}
+
+.dashboard{
+    width: 100vw;
+    height: 100%;
     /* background-image: linear-gradient(rgb(6, 6, 6), rgba(0, 0, 0, 0)); */
-    background-color: #040404;
+    /* background-color: #040404; */
     color: white;
     display: flex;
     justify-content: center;
@@ -15,54 +57,62 @@
     height: 100%;
     /* background-color: #101010; */
     color: white;
-    display: flex;
-    flex-direction: column;
-    border-right: 1px solid rgb(134, 134, 134);
+    /* display: flex;
+    flex-direction: column; */
+    border-right: 1px solid #848484;
     overflow-x: hidden;
+    overflow-y: scroll;
 }
 
 .menuList{
     list-style: none;
-    padding: 10;
     margin: 0;
-    margin-top: 20px;
-    display: flex;
-    flex-direction: column;
-    height: 100%;
-    gap: 20px;
-    color: #adadad;
+
+    color: #e2e2e2;
+    padding: 0;
 }
 
-.settingsButton{
+
+.socials{
     list-style: none;
     width: 100%;
-    color: #adadad;
-    border-top: 1px solid rgb(134, 134, 134) ;
-    padding-top: 20px;
+    color: #dfdfdf;
+    /* border-top: 1px solid #848484 ; */
+    display: flex;
+    gap: 10px;
+    height: 50px;
+    margin-bottom: 100px
 }
 
-.settingsButton li{
-    width: 100%;
+.socials li{
     display: flex;
     transition: all 0.2s ease-in-out;
-    cursor: pointer;
+    font-size: 1vw;
+    cursor: pointer ! important;
 }
 
 .menuList li{
     position: relative;
     cursor: pointer;
-    transition: all 0.2s ease-in-out;
+    transition: all 0.4s ease-in-out;
     display: flex;
     align-items: flex-start !important;
     width: 100%;
+    border-bottom: 1px solid #848484;
+    padding: 20px;
+    font-size: 1vw;
+    font-weight: 300;
 }
 
-.settingsButton li:hover,
+
+
 .menuList li:hover{
-    color: white;
-    scale: 0.95;
-    border-left: 1px solid white;
-    padding-left: 10px;
+    color: #101010;
+    background-color: white;
+}
+
+.menuList li  img:hover{
+    filter: invert(0) brightness(1);
 }
 
 .rightContent{

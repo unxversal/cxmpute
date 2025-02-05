@@ -125,7 +125,11 @@ interface User {
     infxrenceConfig: InfxrenceConfig;
 }
 
-export default function Dashboard() {
+type DashboardProps = {
+    toggleDashboard: () => void;
+};
+
+export default function Dashboard({ toggleDashboard }: DashboardProps) {
 
     const [page, setPage] = useState('home');
     const [user, setUser] = useState<User | null>(null);
@@ -180,325 +184,375 @@ export default function Dashboard() {
     })
 
     return (
-        <div
-            style={{
-                fontFamily: "Helvetica Neue",
-                fontWeight: 200,
-            }} 
-            className={styles.dashboard}>
-               <div className={styles.leftMenu}>
-                    <ul 
-                        className={styles.menuList}>
+        <div className={styles.container}>
+            <div className={styles.header}>
+                <div className={styles.headerLeft}>CXMPUTE</div>
+                <div className={styles.headerRight}>
+                    <button onClick={toggleDashboard}>VIEW HERO</button>
+                </div>
+            </div>
+            <div
+                style={{
+                    fontFamily: "Helvetica Neue",
+                    fontWeight: 200,
+                }} 
+                className={styles.dashboard}>
+                <div className={styles.leftMenu}>
+                        <ul 
+                            className={styles.menuList}>
+                                
+                            <li
+                                onClick={() => setPage('home')}
+                            >
+                                <img
+                                src="/home.svg"
+                                alt="Home icon"
+                                style={{
+                                    width: '20px',
+                                    height: '20px',
+                                    marginRight: '8px',
+                                    marginLeft: 0,
+                                    filter: 'brightness(0) invert(1)',
+                                }}
+                                />
+                                <div>
+                                    HOME
+                                </div>
+                            </li>
+                            <li
+                                onClick={() => setPage('overview')}
+                            >
+                                <img
+                                src="/globe.svg"
+                                alt="Overview icon"
+                                style={{
+                                    width: '20px',
+                                    height: '20px',
+                                    marginRight: '8px',
+                                    marginLeft: 0,
+                                    filter: 'brightness(0) invert(1)',
+                                }}
+                                />
+                                OVERVIEW
+                            </li>
+                            <li
+                                onClick={() => setPage('dashboard')}
+                                
+                            >
+                                <img
+                                src="/dashboard-dots.svg"
+                                alt="Dashboard icon"
+                                style={{
+                                    width: '20px',
+                                    height: '20px',
+                                    marginRight: '8px',
+                                    marginLeft: 0,
+                                    filter: 'brightness(0) invert(1)',
+                                }}
+                                />
+                                DASHBOARD
+                            </li>
                             
-                        <li
-                            onClick={() => setPage('home')}
-                        >
-                            <img
-                            src="/home.svg"
-                            alt="Home icon"
-                            style={{
-                                width: '20px',
-                                height: '20px',
-                                marginRight: '8px',
-                                marginLeft: 0,
-                                filter: 'brightness(0) invert(1)',
-                            }}
-                            />
-                            <div>
-                                Home
-                            </div>
-                        </li>
-                        <li
-                            onClick={() => setPage('overview')}
-                        >
-                            <img
-                            src="/globe.svg"
-                            alt="Overview icon"
-                            style={{
-                                width: '20px',
-                                height: '20px',
-                                marginRight: '8px',
-                                marginLeft: 0,
-                                filter: 'brightness(0) invert(1)',
-                            }}
-                            />
-                            Overview
-                        </li>
-                        <li
-                            onClick={() => setPage('dashboard')}
+                            <li
+                                onClick={() => setPage('myPods')}
+                                
+                            >
+                                <img
+                                src="/cube-scan.svg"
+                                alt="My Pods icon"
+                                style={{
+                                    width: '20px',
+                                    height: '20px',
+                                    marginRight: '8px',
+                                    marginLeft: 0,
+                                    filter: 'brightness(0) invert(1)',
+                                }}
+                                />
+                                MY PODS
+                            </li>
+                            <li
+                                onClick={() => setPage('podMarket')}
+                                
+                            >
+                                <img
+                                src="/money-square-solid.svg"
+                                alt="Pod Market icon"
+                                style={{
+                                    width: '20px',
+                                    height: '20px',
+                                    marginRight: '8px',
+                                    marginLeft: 0,
+                                    filter: 'brightness(0) invert(1)',
+                                }}
+                                />
+                                POD MARKET
+                            </li>
+                            <li
+                                onClick={() => setPage('serverless')}
+                                
+                            >
+                                <img
+                                src="/cloud-square-solid.svg"
+                                alt="Serverless icon"
+                                style={{
+                                    width: '20px',
+                                    height: '20px',
+                                    marginRight: '8px',
+                                    marginLeft: 0,
+                                    filter: 'brightness(0) invert(1)',
+                                }}
+                                />
+                                SXRVERLESS
+                            </li>
+                            <li
+                                onClick={() => setPage('infxrence')}
+                                
+                            >
+                                <img
+                                src="/brain-electricity.svg"
+                                alt="Infxrence icon"
+                                style={{
+                                    width: '20px',
+                                    height: '20px',
+                                    marginRight: '8px',
+                                    marginLeft: 0,
+                                    filter: 'brightness(0) invert(1)',
+                                }}
+                                />
+                                INFXRENCE
+                            </li>
+                            <li
+                                onClick={() => setPage('kxbernetes')}
+                                
+                            >
+                                <img
+                                src="/server.svg"
+                                alt="Kxbernetes icon"
+                                style={{
+                                    width: '20px',
+                                    height: '20px',
+                                    marginRight: '8px',
+                                    marginLeft: 0,
+                                    filter: 'brightness(0) invert(1)',
+                                }}
+                                />
+                                KXBERNETES
+                            </li>
+                            <li
+                                onClick={() => setPage('agxnts')}
+                                
+                            >
+                                <img
+                                src="/pen-tablet.svg"
+                                alt="Agxnts icon"
+                                style={{
+                                    width: '20px',
+                                    height: '20px',
+                                    marginRight: '8px',
+                                    marginLeft: 0,
+                                    filter: 'brightness(0) invert(1)',
+                                }}
+                                />
+                                AGXNTS
+                            </li>
+                            <li
+                                onClick={() => setPage('stxrage')}
+                                
+                            >
+                                <img
+                                src="/database.svg"
+                                alt="Stxrage icon"
+                                style={{
+                                    width: '20px',
+                                    height: '20px',
+                                    marginRight: '8px',
+                                    marginLeft: 0,
+                                    filter: 'brightness(0) invert(1)',
+                                }}
+                                />
+                                STXRAGE
+                            </li>
+                            <li
+                                onClick={() => setPage('daiArchxve')}
+                                
+                            >
+                                <img
+                                src="/database-solid.svg"
+                                alt="dAI Archxve icon"
+                                style={{
+                                    width: '20px',
+                                    height: '20px',
+                                    marginRight: '8px',
+                                    marginLeft: 0,
+                                    filter: 'brightness(0) invert(1)',
+                                }}
+                                />
+                                dAI ARCHXVE
+                            </li>
+                            <li
+                                onClick={() => setPage('playground')}
+                                
+                            >
+                                <img
+                                src="/open-in-browser.svg"
+                                alt="Playground icon"
+                                style={{
+                                    width: '20px',
+                                    height: '20px',
+                                    marginRight: '8px',
+                                    marginLeft: 0,
+                                    filter: 'brightness(0) invert(1)',
+                                }}
+                                />
+                                PLXYGROUND
+                            </li>
+                            <li
+                                onClick={() => setPage('chat')}
+                                
+                            >
+                                <img
+                                src="/telegram.svg"
+                                alt="Chat icon"
+                                style={{
+                                    width: '20px',
+                                    height: '20px',
+                                    marginRight: '8px',
+                                    marginLeft: 0,
+                                    filter: 'brightness(0) invert(1)',
+                                }}
+                                />
+                                CHXT
+                            </li>
+                            <li
+                                onClick={() => setPage('provider')}
+                                
+                            >
+                                <img
+                                src="/cpu.svg"
+                                alt="Provider icon"
+                                style={{
+                                    width: '20px',
+                                    height: '20px',
+                                    marginRight: '8px',
+                                    marginLeft: 0,
+                                    filter: 'brightness(0) invert(1)',
+                                }}
+                                />
+                                PRXVIDER
+                            </li>
+                            <li
+                                onClick={() => setPage('settings')}
+                                
+                            >
+                                <img
+                                src="/settings.svg"
+                                alt="Settings icon"
+                                style={{
+                                    width: '20px',
+                                    height: '20px',
+                                    marginRight: '8px',
+                                    marginLeft: 0,
+                                    filter: 'brightness(0) invert(1)',
+                                }}
+                                />
+                                <div>
+                                    SETTINGS
+                                </div>
+                            </li>
                             
-                        >
-                            <img
-                            src="/dashboard-dots.svg"
-                            alt="Dashboard icon"
-                            style={{
-                                width: '20px',
-                                height: '20px',
-                                marginRight: '8px',
-                                marginLeft: 0,
-                                filter: 'brightness(0) invert(1)',
-                            }}
-                            />
-                            Dashboard
-                        </li>
-                        
-                        <li
-                            onClick={() => setPage('myPods')}
-                            
-                        >
-                            <img
-                            src="/cube-scan.svg"
-                            alt="My Pods icon"
-                            style={{
-                                width: '20px',
-                                height: '20px',
-                                marginRight: '8px',
-                                marginLeft: 0,
-                                filter: 'brightness(0) invert(1)',
-                            }}
-                            />
-                            My Pods
-                        </li>
-                        <li
-                            onClick={() => setPage('podMarket')}
-                            
-                        >
-                            <img
-                            src="/money-square-solid.svg"
-                            alt="Pod Market icon"
-                            style={{
-                                width: '20px',
-                                height: '20px',
-                                marginRight: '8px',
-                                marginLeft: 0,
-                                filter: 'brightness(0) invert(1)',
-                            }}
-                            />
-                            Pod Market
-                        </li>
-                        <li
-                            onClick={() => setPage('serverless')}
-                            
-                        >
-                            <img
-                            src="/cloud-square-solid.svg"
-                            alt="Serverless icon"
-                            style={{
-                                width: '20px',
-                                height: '20px',
-                                marginRight: '8px',
-                                marginLeft: 0,
-                                filter: 'brightness(0) invert(1)',
-                            }}
-                            />
-                            Sxrverless
-                        </li>
-                        <li
-                            onClick={() => setPage('infxrence')}
-                            
-                        >
-                            <img
-                            src="/brain-electricity.svg"
-                            alt="Infxrence icon"
-                            style={{
-                                width: '20px',
-                                height: '20px',
-                                marginRight: '8px',
-                                marginLeft: 0,
-                                filter: 'brightness(0) invert(1)',
-                            }}
-                            />
-                            Infxrence
-                        </li>
-                        <li
-                            onClick={() => setPage('kxbernetes')}
-                            
-                        >
-                            <img
-                            src="/server.svg"
-                            alt="Kxbernetes icon"
-                            style={{
-                                width: '20px',
-                                height: '20px',
-                                marginRight: '8px',
-                                marginLeft: 0,
-                                filter: 'brightness(0) invert(1)',
-                            }}
-                            />
-                            Kxbernetes
-                        </li>
-                        <li
-                            onClick={() => setPage('agxnts')}
-                            
-                        >
-                            <img
-                            src="/pen-tablet.svg"
-                            alt="Agxnts icon"
-                            style={{
-                                width: '20px',
-                                height: '20px',
-                                marginRight: '8px',
-                                marginLeft: 0,
-                                filter: 'brightness(0) invert(1)',
-                            }}
-                            />
-                            Agxnts
-                        </li>
-                        <li
-                            onClick={() => setPage('stxrage')}
-                            
-                        >
-                            <img
-                            src="/database.svg"
-                            alt="Stxrage icon"
-                            style={{
-                                width: '20px',
-                                height: '20px',
-                                marginRight: '8px',
-                                marginLeft: 0,
-                                filter: 'brightness(0) invert(1)',
-                            }}
-                            />
-                            Stxrage
-                        </li>
-                        <li
-                            onClick={() => setPage('daiArchxve')}
-                            
-                        >
-                            <img
-                            src="/database-solid.svg"
-                            alt="dAI Archxve icon"
-                            style={{
-                                width: '20px',
-                                height: '20px',
-                                marginRight: '8px',
-                                marginLeft: 0,
-                                filter: 'brightness(0) invert(1)',
-                            }}
-                            />
-                            dAI Archxve
-                        </li>
-                        <li
-                            onClick={() => setPage('playground')}
-                            
-                        >
-                            <img
-                            src="/open-in-browser.svg"
-                            alt="Playground icon"
-                            style={{
-                                width: '20px',
-                                height: '20px',
-                                marginRight: '8px',
-                                marginLeft: 0,
-                                filter: 'brightness(0) invert(1)',
-                            }}
-                            />
-                            Plxyground
-                        </li>
-                        <li
-                            onClick={() => setPage('chat')}
-                            
-                        >
-                            <img
-                            src="/telegram.svg"
-                            alt="Chat icon"
-                            style={{
-                                width: '20px',
-                                height: '20px',
-                                marginRight: '8px',
-                                marginLeft: 0,
-                                filter: 'brightness(0) invert(1)',
-                            }}
-                            />
-                            Chxt
-                        </li>
-                        <li
-                            onClick={() => setPage('provider')}
-                            
-                        >
-                            <img
-                            src="/cpu.svg"
-                            alt="Provider icon"
-                            style={{
-                                width: '20px',
-                                height: '20px',
-                                marginRight: '8px',
-                                marginLeft: 0,
-                                filter: 'brightness(0) invert(1)',
-                            }}
-                            />
-                            Prxvider
-                        </li>
-                        
-                    </ul>
-                    <ul className={styles.settingsButton}>
-                        <li
-                            onClick={() => setPage('settings')}
-                            
-                        >
-                            <img
-                            src="/settings.svg"
-                            alt="Settings icon"
-                            style={{
-                                width: '20px',
-                                height: '20px',
-                                marginRight: '8px',
-                                marginLeft: 0,
-                                filter: 'brightness(0) invert(1)',
-                            }}
-                            />
-                            <div>
-                                Settings
-                            </div>
-                        </li>
-                    </ul>
-               </div>
-               <div className={styles.rightContent}>
-                
-                    {page === 'home' && (<div className={styles.homePage}>
-                        <Cobe markerlist={markerlist}/>
-                    </div>)}
-                    {page === 'dashboard' && <div className={styles.dashboardPage}>
-                        <h1>Dashboard</h1>
-                    </div>}
-                    {page === 'myPods' && <div className={styles.myPodsPage}>
-                        <h1>My Pods</h1>
-                    </div>}
-                    {page === 'podMarket' && <div className={styles.podMarketPage}>
-                        <h1>Pod Market</h1>
-                    </div>}
-                    {page === 'serverless' && <div className={styles.serverlessPage}>
-                        <h1>Sxrverless</h1>
-                    </div>}
-                    {page === 'infxrence' && <div className={styles.infxrencePage}>
-                        <h1>Infxrence</h1>
-                    </div>}
-                    {page === 'kxbernetes' && <div className={styles.kxbernetesPage}>
-                        <h1>Kxbernetes</h1>
-                    </div>}
-                    {page === 'agxnts' && <div className={styles.agxntsPage}>
-                        <h1>Agxnts</h1>
-                    </div>}
-                    {page === 'stxrage' && <div className={styles.stxragePage}>
-                        <h1>Stxrage</h1>
-                    </div>}
-                    {page === 'daiArchxve' && <div className={styles.daiArchxvePage}>
-                        <h1>dAI Archxve</h1>
-                    </div>}
-                    {page === 'playground' && <div className={styles.playgroundPage}>
-                        <h1>Plxyground</h1> 
-                    </div>}     
-                    {page === 'chat' && <div className={styles.chatPage}>        
-                        <h1>Chxt</h1>       
-                    </div>}
-                    {page === 'provider' && <div className={styles.providerPage}>        
-                        <h1>Prxvider</h1>       
-                    </div>}  
-                    {page === 'settings' && <div className={styles.settingsPage}>        
-                        <h1>Settings</h1>       
-                    </div>}
+                        </ul>
+                        <ul className={styles.socials}>
+                            <li onClick={() => window.open('https://github.com/unxversal', '_blank')}>
+                                <img
+                                src="/github-circle.svg"
+                                alt="Github icon"
+                                style={{
+                                    width: '20px',
+                                    height: '20px',
+                                    marginRight: '8px',
+                                    marginLeft: 0,
+                                    filter: 'brightness(0) invert(1)',
+                                    cursor: 'pointer',
+                                }}
+                                />
+                            </li>
+                            <li>
+                                <img
+                                src="/discord.svg"
+                                alt="Discord icon"
+                                style={{
+                                    width: '20px',
+                                    height: '20px',
+                                    marginRight: '8px',
+                                    marginLeft: 0,
+                                    filter: 'brightness(0) invert(1)',
+                                    cursor: 'pointer',
+                                }}
+                                />
+                            </li>
+                            <li>
+                                <img
+                                src="/x.svg"
+                                alt="X icon"
+                                style={{
+                                    width: '20px',
+                                    height: '20px',
+                                    marginRight: '8px',
+                                    marginLeft: 0,
+                                    filter: 'brightness(0) invert(1)',
+                                    cursor: 'pointer',
+                                }}
+                                />
+                            </li>
+                        </ul>
+                </div>
+                <div className={styles.rightContent}>
                     
-               </div>
+                        {page === 'home' && (<div className={styles.homePage}>
+                            <Cobe markerlist={markerlist}/>
+                        </div>)}
+                        {page === 'dashboard' && <div className={styles.dashboardPage}>
+                            <h1>Dashboard</h1>
+                        </div>}
+                        {page === 'myPods' && <div className={styles.myPodsPage}>
+                            <h1>My Pods</h1>
+                        </div>}
+                        {page === 'podMarket' && <div className={styles.podMarketPage}>
+                            <h1>Pod Market</h1>
+                        </div>}
+                        {page === 'serverless' && <div className={styles.serverlessPage}>
+                            <h1>Sxrverless</h1>
+                        </div>}
+                        {page === 'infxrence' && <div className={styles.infxrencePage}>
+                            <h1>Infxrence</h1>
+                        </div>}
+                        {page === 'kxbernetes' && <div className={styles.kxbernetesPage}>
+                            <h1>Kxbernetes</h1>
+                        </div>}
+                        {page === 'agxnts' && <div className={styles.agxntsPage}>
+                            <h1>Agxnts</h1>
+                        </div>}
+                        {page === 'stxrage' && <div className={styles.stxragePage}>
+                            <h1>Stxrage</h1>
+                        </div>}
+                        {page === 'daiArchxve' && <div className={styles.daiArchxvePage}>
+                            <h1>dAI Archxve</h1>
+                        </div>}
+                        {page === 'playground' && <div className={styles.playgroundPage}>
+                            <h1>Plxyground</h1> 
+                        </div>}     
+                        {page === 'chat' && <div className={styles.chatPage}>        
+                            <h1>Chxt</h1>       
+                        </div>}
+                        {page === 'provider' && <div className={styles.providerPage}>        
+                            <h1>Prxvider</h1>       
+                        </div>}  
+                        {page === 'settings' && <div className={styles.settingsPage}>        
+                            <h1>Settings</h1>       
+                        </div>}
+                        
+                </div>
+            </div>
         </div>
     );
 };

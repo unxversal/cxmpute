@@ -23,7 +23,7 @@ main{
 
 }
 
-body::-webkit-scrollbar { 
+*::-webkit-scrollbar { 
   display: none;  /* Safari and Chrome */
 }
 
@@ -140,4 +140,28 @@ button[type="submit"] {
 #scrollButton2:hover,
 #scrollButton:hover {
   scale: 0.95;
+}
+
+.allletters,
+.encrypted,
+.revealed{
+    font-weight: 200 !important;
+    font-size: 40px;
+    line-height: 50px;
+    color: white;
+    text-align: center;
+    margin: 0;
+    cursor: pointer;
+}
+
+.encryptedTitle,
+.revealedTitle{
+    font-weight: 400 !important;
+    font-size: 7vw;
+    line-height: 50px;
+    color: white;
+    text-align: center;
+    margin: 0;
+    font-family: Anurati;
+    cursor: default;
 }

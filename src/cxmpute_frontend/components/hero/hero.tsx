@@ -1,8 +1,13 @@
 import { Cobe } from '../cobe/cobe';
+import DecryptedText from '../decryptedText/decryptedText';
 import styles from './hero.module.css';
 import * as React from 'react';
 
-export default function Hero(){
+type HeroProps = {
+    toggleDashboard: () => void;
+};
+
+export default function Hero({ toggleDashboard }: HeroProps) {
 
     type Chain = 
     'icp' | 
@@ -124,8 +129,33 @@ export default function Hero(){
     return (
         <div className={styles.hero}>
             <div className={styles.left}>
-                <h1>cxmpute</h1>
-                <p>the decentralized backend for the web</p>
+                <DecryptedText
+                    text="CXMPUTE"
+                    revealDirection="center"
+                    className="revealedTitle"
+                    encryptedClassName="encryptedTitle"
+                />
+                <div className={styles.subtitle}>
+                    <p>the decentralized backend for the web</p>
+                    <DecryptedText 
+                        text="WHITEPAPER" 
+                        className="revealed"
+                        encryptedClassName="encrypted"
+                    />
+                    <DecryptedText 
+                        text="GET INVOLVED" 
+                        className="revealed"
+                        encryptedClassName="encrypted"
+                    />
+                    <button className={styles.button} onClick={toggleDashboard}>
+                        <DecryptedText 
+                            text="OPEN CXMPUTE" 
+                            className="revealedButton"
+                            encryptedClassName="encryptedButton"
+                        />
+                    </button>
+                </div>
+                
             </div>
             <div className={styles.right}>
                 <Cobe markerlist={markerlist} />

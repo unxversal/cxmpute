@@ -39,6 +39,10 @@ function App() {
     setHome(true);
   }
 
+  function toggleDashboard() {
+    setDashboardOpen((prev) => !prev);
+  }
+
   
   
 
@@ -70,8 +74,8 @@ function App() {
         <div id="rightbalancer"></div>
         <div id="rightcontent">
           {!home && <button id="scrollButton2" onClick={() => scrollToLeftPage()}>《</button>}
-          {!dashboardOpen && <Hero />}
-          {dashboardOpen && <Dashboard />}
+          {!dashboardOpen && <Hero toggleDashboard={toggleDashboard}  />}
+          {dashboardOpen && <Dashboard toggleDashboard={toggleDashboard} />}
         </div>
       </div>
       

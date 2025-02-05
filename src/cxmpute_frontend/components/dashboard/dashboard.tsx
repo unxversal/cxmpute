@@ -82,37 +82,9 @@ type PodType =
     'BAAI/bge-m3' |
     Model
     
-interface InfxrenceModel{
-    model: Model;
-    runs: number;
-}
 
-type City = {
-    location: number[];
-    size: number;
-}
 
-interface TokenStat{
-    chain: Chain;
-    marketCap: number;
-    currentPrice: number;
-    inCirculation: number;
-}
 
-interface NetworkStats{
-    totalUsers: number;
-    totalProviders: number;
-    cxmputeProcessed: number;
-    infxrenceRequests: number;
-    modelSpecificRequests: InfxrenceModel[];
-    sxrverlessExecutions: number;
-    vmsAvailable: number;
-    stxrageUsed: number;
-    agxntRequests: number;
-    workflowExecutions: number;
-    cities: City[];
-    tokenStats: TokenStat[];
-}
 
 interface File{
     ID: string;
@@ -121,7 +93,7 @@ interface File{
 
 interface Pod {
     name: string;
-    files: File;
+    files?: File;
     priceRange: number[];
     type: PodType;
     status: 'deployed' | 'deploying' | 'undeployed';
@@ -156,7 +128,7 @@ interface User {
 export default function Dashboard() {
 
     const [page, setPage] = useState('home');
-    const [user, setUser] = useState(null);
+    const [user, setUser] = useState<User | null>(null);
 
     // useEffect runs on component mount
     useEffect(() => {
@@ -217,23 +189,7 @@ export default function Dashboard() {
                <div className={styles.leftMenu}>
                     <ul 
                         className={styles.menuList}>
-                        <li
-                            onClick={() => setPage('overview')}
                             
-                        >
-                            <img
-                            src="/globe.svg"
-                            alt="Overview icon"
-                            style={{
-                                width: '20px',
-                                height: '20px',
-                                marginRight: '8px',
-                                marginLeft: 0,
-                                filter: 'brightness(0) invert(1)',
-                            }}
-                            />
-                            Overview
-                        </li>
                         <li
                             onClick={() => setPage('home')}
                         >
@@ -251,6 +207,22 @@ export default function Dashboard() {
                             <div>
                                 Home
                             </div>
+                        </li>
+                        <li
+                            onClick={() => setPage('overview')}
+                        >
+                            <img
+                            src="/globe.svg"
+                            alt="Overview icon"
+                            style={{
+                                width: '20px',
+                                height: '20px',
+                                marginRight: '8px',
+                                marginLeft: 0,
+                                filter: 'brightness(0) invert(1)',
+                            }}
+                            />
+                            Overview
                         </li>
                         <li
                             onClick={() => setPage('dashboard')}
@@ -457,6 +429,9 @@ export default function Dashboard() {
                             />
                             Prxvider
                         </li>
+                        
+                    </ul>
+                    <ul className={styles.settingsButton}>
                         <li
                             onClick={() => setPage('settings')}
                             
@@ -472,7 +447,9 @@ export default function Dashboard() {
                                 filter: 'brightness(0) invert(1)',
                             }}
                             />
-                            Settings
+                            <div>
+                                Settings
+                            </div>
                         </li>
                     </ul>
                </div>

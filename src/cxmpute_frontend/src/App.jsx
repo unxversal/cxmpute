@@ -3,10 +3,12 @@ import { cxmpute_backend } from 'declarations/cxmpute_backend';
 import Spiral from '../components/3dspiral/3dspiral';
 import Overlay from '../components/overlay/overlay';
 import Dashboard from '../components/dashboard/dashboard';
+import Hero from '../components/hero/hero';
 
 function App() {
   const [greeting, setGreeting] = useState('');
   const [home, setHome] = useState(true);
+  const [dashboardOpen, setDashboardOpen] = useState(false)
 
   function handleSubmit(event) {
     event.preventDefault();
@@ -68,7 +70,8 @@ function App() {
         <div id="rightbalancer"></div>
         <div id="rightcontent">
           {!home && <button id="scrollButton2" onClick={() => scrollToLeftPage()}>《</button>}
-          <Dashboard />
+          {!dashboardOpen && <Hero />}
+          {dashboardOpen && <Dashboard />}
         </div>
       </div>
       

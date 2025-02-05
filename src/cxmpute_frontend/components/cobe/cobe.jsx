@@ -2,13 +2,8 @@ import createGlobe from "cobe";
 import { useEffect, useRef } from "react";
 import { useSpring } from 'react-spring';
 
-export function Cobe( props ) {
-
-  const locationToAngles = (lat, long) => {
-    return [Math.PI - ((long * Math.PI) / 180 - Math.PI / 2), (lat * Math.PI) / 180]
-  }
-
-  const marketlist = props.markers
+export function Cobe({markerlist}) {
+  console.log(markerlist)
 
   const canvasRef = useRef();
   const pointerInteracting = useRef(null);
@@ -40,7 +35,7 @@ export function Cobe( props ) {
       mapBrightness: 6,
       baseColor: [60/255, 60/255, 60/255],
       opacity: 0.5,
-      markerColor: [251 / 255, 100 / 255, 21 / 255],
+      markerColor: [0 / 255, 234/ 255, 255 / 255],
       glowColor: [0.5, 0.5, 0.5],
       markers: markerlist || [],
       onRender: (state) => {

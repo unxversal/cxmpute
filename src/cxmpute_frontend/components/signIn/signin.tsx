@@ -3,6 +3,27 @@ import * as React from 'react';
 import DecryptedText from '../decryptedText/decryptedText';
 import { ethers } from "ethers";
 import { cxmpute_backend } from '../../../declarations/cxmpute_backend';
+import { Chain } from '../../../declarations/cxmpute_backend/cxmpute_backend.did';
+
+const chainMap: { [key: string]: Chain } = {
+  'icp': { 'icp': null },
+  'polygonzkEVM': { 'polygonzkEVM': null },
+  'metis': { 'metis': null },
+  'aptos': { 'aptos': null },
+  'velas': { 'velas': null },
+  'bnbchain': { 'bnbchain': null },
+  'starknet': { 'starknet': null },
+  'aleo': { 'aleo': null },
+  'lisk': { 'lisk': null },
+  'moonbeam': { 'moonbeam': null },
+  'avalanche': { 'avalanche': null },
+  'roostock': { 'roostock': null },
+  'linea': { 'linea': null },
+  'cronos': { 'cronos': null },
+  'polygonPOS': { 'polygonPOS': null },
+  'cartesi': { 'cartesi': null },
+  'vechain': { 'vechain': null },
+};
 
 interface SigninProps {
     selectedChain: string;
@@ -23,16 +44,23 @@ export default function SignIn({
             // -----------------------------------
             // 1. ICP FLOW (PLUG WALLET)
             // -----------------------------------
-            if ((window as any).plug) {
-              await (window as any).plug.requestConnect({
-                whitelist: ["your-canister-id"], // set your actual canister ID here
-                host: "https://boundary.ic0.app"
-              });
-              const principal = await (window as any).plug.agent.getPrincipal();
-              const walletAddress = principal.toText(); 
+            if ((window as any).ic.plug) {
+
+              let address
+
+              try {
+                address = await (window as any).ic.plug.requestConnect();
+                console.log(`The connected user's public key is:`, address);
+              } catch (e) {
+                console.log(e);
+              }
+
+            //   const principal = await (window as any).plug.agent.getPrincipal();
+            //   const walletAddress = principal.toText(); 
               
+              const selectedChainString = chainMap['icp'];
               // Make the backend call
-              const user = await cxmpute_backend.getOrCreateUser(walletAddress, selectedChain);
+              const user = await cxmpute_backend.getOrCreateUser(address, selectedChainString);
               onWalletConnected?.(user);
             } else {
               console.error("Plug wallet not found. Please install Plug for ICP.");
@@ -53,10 +81,12 @@ export default function SignIn({
               const walletAddress = await signer.getAddress();
               
               console.log("MetaMask wallet address:", walletAddress);
+
+              const selectedChainString = chainMap[selectedChain];
     
               // Now call your backend
               // Note: selectedChain must match one of your Motoko variants
-              const user = await cxmpute_backend.getOrCreateUser(walletAddress, selectedChain);
+              const user = await cxmpute_backend.getOrCreateUser(walletAddress, selectedChainString);
               onWalletConnected?.(user);
             } else {
               console.error("MetaMask not found. Please install MetaMask for EVM chains.");
@@ -93,7 +123,7 @@ export default function SignIn({
                     <option value="linea">Linea</option>
                 </select>
 
-                {selectedChain && <button>
+                {selectedChain && <button onClick={handleConnectWallet}>
                     <DecryptedText 
                         text="CONNECT WALLET" 
                         className="revealedButton"

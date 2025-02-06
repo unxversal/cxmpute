@@ -157,6 +157,7 @@ export default function Dashboard({ toggleDashboard }: DashboardProps) {
     const locationToAngles = (lat: number, long: number) => {
         return [Math.PI - ((long * Math.PI) / 180 - Math.PI / 2), (lat * Math.PI) / 180]
     }
+    
 
     const marketlist: { lat: number; long: number }[] = [
         { lat: 40.7128, long: -74.0060 },   // New York City, USA

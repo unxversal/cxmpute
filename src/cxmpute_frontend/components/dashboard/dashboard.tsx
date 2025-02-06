@@ -202,7 +202,7 @@ export default function Dashboard({ toggleDashboard }: DashboardProps) {
                         <ul 
                             className={styles.menuList}>
                                 
-                            <li
+                            {/* <li
                                 onClick={() => setPage('home')}
                             >
                                 <img
@@ -235,7 +235,7 @@ export default function Dashboard({ toggleDashboard }: DashboardProps) {
                                 }}
                                 />
                                 OVERVIEW
-                            </li>
+                            </li> */}
                             <li
                                 onClick={() => setPage('dashboard')}
                                 

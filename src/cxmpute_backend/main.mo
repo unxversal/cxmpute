@@ -2,6 +2,8 @@ import Array "mo:base/Array";
 import Nat "mo:base/Nat";
 import Types "Types";
 import Text "mo:base/Text";
+import Debug "mo:base/Debug";
+import Blob "mo:base/Blob";
 
 actor UserManager {
 

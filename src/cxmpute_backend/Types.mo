@@ -16,7 +16,8 @@ module Types {
     #velas;
     #cartesi;
     #aleo;
-    #polygon;
+    #polygonzkEVM;
+    #polygonPOS;
     #vechain;
     #aptos;
     #linea

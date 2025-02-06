@@ -1,0 +1,43 @@
+.signIn{
+    height: 100%;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.signIn select,
+.signIn button{
+    padding: 20px;
+    outline: none;
+    cursor: pointer;
+    font-family: "Helvetica Neue";
+    font-weight: 200;
+}
+
+.signIn select{
+    background-color: #101010;
+    color: white;
+    border: 1px solid white;
+}
+
+.signIn button{
+    background-color: white;
+    color: #101010;
+}
+
+.signIn button:hover{
+    background-color: white;
+    color: #101010;
+}
+
+.signIn h1{
+    padding: 0;
+    margin: 0;
+    font-family: "Helvetica Neue";
+    font-weight: 200;
+    /* font-size: 2rem; */
+}

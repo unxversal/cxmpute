@@ -18,7 +18,7 @@ export default function StxragePage({ user }: PodsPageParams) {
                     <div className={styles.pod}>
                         <div className={styles.podName}>
                             <img
-                                src="/cube-scan.svg"
+                                src="/cube-dots.svg"
                                 alt="My Pods icon"
                                 style={{
                                     width: '5vw',

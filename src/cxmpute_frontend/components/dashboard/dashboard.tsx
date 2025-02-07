@@ -250,7 +250,28 @@ const sampleUser: User = {
           bucketID: "bucket-backups"
         },
         size: 99999
-      }
+      },
+      {
+        file: {
+          ID: "backup-02",
+          bucketID: "bucket-backups"
+        },
+        size: 88888
+      },
+      {
+        file: {
+          ID: "backup-03",
+          bucketID: "bucket-backups"
+        },
+        size: 77777
+      },
+      {
+        file: {
+          ID: "backup-04",
+          bucketID: "bucket-backups"
+        },
+        size: 77777
+      },
     ],
     totalStxrage: 888888,
     infxrenceConfig: {

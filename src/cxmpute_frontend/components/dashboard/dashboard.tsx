@@ -11,6 +11,7 @@ import PodsPage from '../podspage/podspage';
 import InferencePage from '../inferencepage/inferencepage';
 import AgxntsPage from '../agxntspage/agxntspage';
 import StxragePage from '../stxragepage/stxragepage';
+import Playground from '../playground/playground';
 
 // interfaces
 
@@ -380,11 +381,8 @@ export default function Dashboard({ toggleDashboard }: DashboardProps) {
                         {page === 'stxrage' && <div className={styles.stxragePage}>
                             <StxragePage user={ user ? user : undefined}/>
                         </div>}
-                        {page === 'daiArchxve' && <div className={styles.daiArchxvePage}>
-                            <h1>dAI Archxve</h1>
-                        </div>}
                         {page === 'playground' && <div className={styles.playgroundPage}>
-                            <h1>Plxyground</h1> 
+                            <Playground />
                         </div>}     
                         {page === 'chat' && <div className={styles.chatPage}>        
                             <h1>Chxt</h1>       

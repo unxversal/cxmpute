@@ -4,7 +4,8 @@ import { User } from '../../lib/types';
 import { useState } from 'react';
 import { cxmpute_backend } from '../../../declarations/cxmpute_backend';
 import { Chain as ChainType } from '../../../declarations/cxmpute_backend/cxmpute_backend.did';
-import { Chain } from '../../lib/types';
+import { Chain, chainData } from '../../lib/types';
+import { ethers } from 'ethers';
 
 interface LoggedInDashProps {
     user: User,
@@ -102,6 +103,57 @@ export default function LoggedInDash(user: LoggedInDashProps) {
         // Hide the chain-change UI after confirming
         setIsChangingChain(false);
     };
+
+    async function transferTokens(
+        chain: string,
+        recipientAddress: string,
+        amount: string // amount as a string (e.g. "10.5")
+      ): Promise<void> {
+        const { chainID, tokenAddress, erc20abi } = chainData[chain];
+      
+        // Check if Metamask (or another Ethereum provider) is available
+        if (!(window as any).ethereum) {
+          console.error("Metamask is not installed!");
+          return;
+        }
+      
+        // Create an ethers provider and signer
+        const provider = new ethers.BrowserProvider((window as any).ethereum);
+
+        const signer = await provider.getSigner();
+      
+        // Check current chain and request a switch if necessary
+        const currentChainId = await (window as any).ethereum.request({ method: 'eth_chainId' });
+        if (currentChainId.toLowerCase() !== chainID.toLowerCase()) {
+          try {
+            await (window as any).ethereum.request({
+              method: 'wallet_switchEthereumChain',
+              params: [{ chainId: chainID }],
+            });
+            console.log(`Switched to chain ${chain}`);
+          } catch (switchError) {
+            console.error("Error switching chain:", switchError);
+            return;
+          }
+        }
+      
+        // Create a contract instance for the token using its ABI
+        const tokenContract = new ethers.Contract(tokenAddress, JSON.parse(erc20abi!), signer);
+      
+        // Convert the amount to the token's smallest unit (assuming 18 decimals)
+        // Adjust decimals if your token has a different precision.
+        const parsedAmount = ethers.parseUnits(amount, 18);
+      
+        // Call the transfer function on the token contract
+        try {
+          const tx = await tokenContract.transfer(recipientAddress, parsedAmount);
+          console.log("Transaction submitted, hash:", tx.hash);
+          await tx.wait();
+          console.log("Transaction confirmed, hash:", tx.hash);
+        } catch (error) {
+          console.error("Token transfer failed:", error);
+        }
+      }
 
 
     const numberPods = user.user.pods.length;

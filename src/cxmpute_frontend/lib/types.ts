@@ -116,3 +116,84 @@ stxres: Stxred[];
 totalStxrage: number;
 infxrenceConfig: InfxrenceConfig;
 }
+
+export const chainData: {
+    [chain: string]: { chainID: string; tokenAddress: string; erc20abi?: string };
+  } = {
+    polygonzkEVM: {
+      chainID: '1101', // Polygon zkEVM Mainnet
+      tokenAddress: '0xYourPolygonTokenAddress',
+      erc20abi: '', //Stringified JSON of the ERC20 contract ABI
+    },
+    metis: {
+      chainID: '1088', // Metis Andromeda Mainnet
+      tokenAddress: '0xYourMetisTokenAddress',
+      erc20abi: '', //Stringified JSON of the ERC20 contract ABI
+    },
+    aptos: {
+      chainID: '', // Aptos is not EVM-compatible; MetaMask does not support it
+      tokenAddress: '0xYourAptosTokenAddress',
+    },
+    icp: {
+      chainID: '', // ICP is not EVM-compatible; MetaMask does not support it
+      tokenAddress: '', // $CXPT ICRC token address
+    },
+    velas: {
+      chainID: '106', // Velas EVM Mainnet
+      tokenAddress: '0xYourVelasTokenAddress',
+      erc20abi: '', //Stringified JSON of the ERC20 contract ABI
+    },
+    bnbchain: {
+      chainID: '56', // BNB Smart Chain Mainnet
+      tokenAddress: '0xYourBNBChainTokenAddress',
+      erc20abi: '', //Stringified JSON of the ERC20 contract ABI
+    },
+    starknet: {
+      chainID: '', // StarkNet is not EVM-compatible; MetaMask does not support it
+      tokenAddress: '0xYourStarkNetTokenAddress',
+    },
+    aleo: {
+      chainID: '', // Aleo is not EVM-compatible; MetaMask does not support it
+      tokenAddress: '0xYourAleoTokenAddress',
+    },
+    lisk: {
+      chainID: '1135', // Lisk is not EVM-compatible; MetaMask does not support it
+      tokenAddress: '0xYourLiskTokenAddress',
+      erc20abi: '', //Stringified JSON of the ERC20 contract ABI
+    },
+    moonbeam: {
+      chainID: '1284', // Moonbeam Mainnet
+      tokenAddress: '0xYourMoonbeamTokenAddress',
+      erc20abi: '', //Stringified JSON of the ERC20 contract ABI
+    },
+    avalanche: {
+      chainID: '43114', // Avalanche C-Chain Mainnet
+      tokenAddress: '0xYourAvalancheTokenAddress',
+      erc20abi: '', //Stringified JSON of the ERC20 contract ABI
+    },
+    roostock: {
+      chainID: '30', // Rootstock Mainnet
+      tokenAddress: '0xYourRootstockTokenAddress',
+      erc20abi: '', //Stringified JSON of the ERC20 contract ABI
+    },
+    linea: {
+      chainID: '59144', // Linea Mainnet
+      tokenAddress: '0xYourLineaTokenAddress',
+      erc20abi: '', //Stringified JSON of the ERC20 contract ABI
+    },
+    cronos: {
+      chainID: '25', // Cronos Mainnet
+      tokenAddress: '0xYourCronosTokenAddress',
+      erc20abi: '', //Stringified JSON of the ERC20 contract ABI
+    },
+    polygonPOS: {
+      chainID: '137', // Polygon (Matic) Mainnet
+      tokenAddress: '0xYourPolygonPOSTokenAddress',
+      erc20abi: '', //Stringified JSON of the ERC20 contract ABI
+    },
+    vechain: {
+      chainID: '', // VeChain is not EVM-compatible; MetaMask does not support it
+      tokenAddress: '0xYourVeChainTokenAddress',
+    },
+  };
+  

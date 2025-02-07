@@ -7,6 +7,7 @@ import DecryptedText from '../decryptedText/decryptedText';
 import Menulist from '../menulist/menulist';
 import SignIn from '../signIn/signin';
 import LoggedInDash from '../loggedInDash/loggedInDash';
+import PodsPage from '../podspage/podspage';
 
 // interfaces
 
@@ -137,38 +138,106 @@ const sampleUser: User = {
     walletAddress: "0xABCDEF1234567890",
     userID: "generatedUserId42",
     provider: false,
-    chain: "starknet",  // any valid Chain value: "icp", "metis", etc.
+    chain: "icp",  // or any valid Chain value
     pods: [
       {
-        name: "MyFirstGPU",
-        files: {
-          ID: "file-xyz",
-          bucketID: "myBucket123"
-        },
-        priceRange: [10, 500],
-        type: "gpuVM",  // e.g., "gpuVM", "serverlessJS", or one of the model strings
-        status: "deploying",  // or "deployed" / "undeployed"
-        memory: 4096,  // in MB, for instance
-        cpu: 4,
-        gpu: 1,
-        storage: 100,  // in GB
-        nodes: 1
+        name: "Meta Llama Pod",
+        priceRange: [1000, 5000],
+        type: "meta-llama/Llama-3.3-70B-Instruct",
+        status: "deploying", // changed from "deployed"
       },
       {
-        name: "MongoDBInstance",
-        files: {
-          ID: "file-abc",
-          bucketID: "bucket-mongo"
-        },
-        priceRange: [0, 50],
-        type: "mongodb",
+        name: "Mistralai Model Pod",
+        priceRange: [800, 4000],
+        type: "mistralai/Mistral-7B-Instruct-v0.3",
+        status: "undeployed", // changed from "deployed"
+      },
+      {
+        name: "General VM Pod",
+        priceRange: [10, 50],
+        type: "generalVM",
         status: "deployed",
         memory: 2048,
         cpu: 2,
-        gpu: 0,
-        storage: 50,
-        nodes: 3
-      }
+      },
+      {
+        name: "Memory VM Pod",
+        priceRange: [20, 60],
+        type: "memoryVM",
+        status: "deploying", // changed from "deployed"
+        memory: 4096,
+      },
+      {
+        name: "CPU VM Pod",
+        priceRange: [15, 70],
+        type: "cpuVM",
+        status: "undeployed", // changed from "deployed"
+        cpu: 4,
+      },
+      {
+        name: "Storage VM Pod",
+        priceRange: [5, 30],
+        type: "storageVM",
+        status: "deploying", // changed from "deployed"
+        storage: 100,
+      },
+      {
+        name: "GPU VM Pod",
+        priceRange: [50, 200],
+        type: "gpuVM",
+        status: "deployed",
+        gpu: 1,
+      },
+      {
+        name: "Kubernetes Pod",
+        priceRange: [100, 300],
+        type: "kubernetes",
+        status: "undeployed", // changed from "deployed"
+        nodes: 3,
+      },
+      {
+        name: "Serverless PY Pod",
+        priceRange: [5, 20],
+        type: "serverlessPY",
+        status: "deployed",
+      },
+      {
+        name: "Serverless JS Pod",
+        priceRange: [5, 20],
+        type: "serverlessJS",
+        status: "deploying", // changed from "deployed"
+      },
+      {
+        name: "Serverless TS Pod",
+        priceRange: [5, 20],
+        type: "serverlessTS",
+        status: "deployed",
+      },
+      {
+        name: "MongoDB Pod",
+        priceRange: [30, 80],
+        type: "mongodb",
+        status: "undeployed", // changed from "deployed"
+        nodes: 2,
+      },
+      {
+        name: "PostgreSQL Pod",
+        priceRange: [25, 75],
+        type: "postgresql",
+        status: "deployed",
+      },
+      {
+        name: "MySQL Pod",
+        priceRange: [20, 70],
+        type: "mysql",
+        status: "deploying", // changed from "deployed"
+      },
+      {
+        name: "BAAI Pod",
+        priceRange: [40, 100],
+        type: "BAAI/bge-m3",
+        status: "deployed",
+      },
     ],
     cxmputeBalance: 1234,
     stxres: [
@@ -185,6 +254,7 @@ const sampleUser: User = {
       priceRange: [10, 100]
     }
   };
+  
   
 
 export default function Dashboard({ toggleDashboard }: DashboardProps) {
@@ -275,13 +345,7 @@ export default function Dashboard({ toggleDashboard }: DashboardProps) {
 
                         </div>}
                         {page === 'myPods' && <div className={styles.myPodsPage}>
-                            <h1>My Pods</h1>
-                        </div>}
-                        {page === 'podMarket' && <div className={styles.podMarketPage}>
-                            <h1>Pod Market</h1>
-                        </div>}
-                        {page === 'serverless' && <div className={styles.serverlessPage}>
-                            <h1>Sxrverless</h1>
+                            <PodsPage user={ user ? user : undefined}/>
                         </div>}
                         {page === 'infxrence' && <div className={styles.infxrencePage}>
                             <h1>Infxrence</h1>

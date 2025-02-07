@@ -77,12 +77,19 @@ const agents: string[] = [
 
 
 export default function Playground() {
+
+    const [runs, setRuns] = React.useState<number>(100);
+
     return (
         <div className={styles.playground}>
             <div className={styles.playgroundHeader}>
                 <h1>PLXYGROUND</h1>
                 <div>
-                    <select id="modelAgentSelect" name="modelAgentSelect">
+                    <select
+                        id="modelAgentSelect"
+                        name="modelAgentSelect"
+                        onChange={() => setRuns(parseFloat((Math.random() * 99 + 1).toFixed(1)))}
+                    >
                         <optgroup label="Models">
                             {models.map((model, index) => (
                                 <option key={`model-${index}`} value={model}>{model}</option>
@@ -121,7 +128,7 @@ export default function Playground() {
                                 filter: 'brightness(0) invert(1)',
                             }}
                         />
-                        <div>25.4M RUNS</div>
+                        <div>{runs}M RUNS</div>
                     </div>
                 </div>
             </div>

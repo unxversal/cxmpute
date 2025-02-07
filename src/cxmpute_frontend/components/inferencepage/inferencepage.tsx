@@ -1,6 +1,5 @@
 import styles from './inferencepage.module.css';
 import * as React from 'react';
-import { User } from '../../lib/types';
 
 const models: string[] = [
     'meta-llama/Llama-3.3-70B-Instruct',
@@ -95,6 +94,11 @@ export default function InferencePage() {
                             >
                                 SAMPLE REQUEST
                             </button>
+                            <button
+                                className={styles.sampleRequestButton}
+                            >
+                                DOWNLOAD
+                            </button>
                         </div>
                     </div>
                 ))}
@@ -102,17 +106,37 @@ export default function InferencePage() {
 
             {popupModel && (
                 <div className={styles.popupOverlay} onClick={closePopup}>
-                <div className={styles.popupContent} onClick={(e) => e.stopPropagation()}>
-                    <h2>Sample API Request</h2>
-                    <p>This is a sample API request for model:</p>
-                    <p className={styles.popupModelName}>{popupModel}</p>
-                    {/* You can add more details or an actual request example here */}
-                    <button className={styles.closePopup} onClick={closePopup}>
-                    Close
-                    </button>
-                </div>
+                    <div className={styles.popupContent} onClick={(e) => e.stopPropagation()}>
+                        <h2>Sample API Request</h2>
+                        <p>This is a sample API request for model:</p>
+                        <p className={styles.popupModelName}>{popupModel}</p>
+                        <pre className={styles.apiRequest}>
+                            {`fetch('http://api.cxmpute.xyz/v1/chat/completions', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                    'Authorization': 'Bearer YOUR_API_KEY'
+                },
+                body: JSON.stringify({
+                    model: '${popupModel}',
+                    messages: [
+                        { "role": "system", "content": "You are a helpful assistant." },
+                        { "role": "user", "content": "Hello, how are you?" }
+                    ],
+                    temperature: 0.7
+                })
+            })
+            .then(response => response.json())
+            .then(data => console.log(data))
+            .catch(error => console.error('Error:', error));`}
+                        </pre>
+                        <button className={styles.closePopup} onClick={closePopup}>
+                            Close
+                        </button>
+                    </div>
                 </div>
             )}
+
 
         </div>
     );

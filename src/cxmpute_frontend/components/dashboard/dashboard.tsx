@@ -9,6 +9,7 @@ import SignIn from '../signIn/signin';
 import LoggedInDash from '../loggedInDash/loggedInDash';
 import PodsPage from '../podspage/podspage';
 import InferencePage from '../inferencepage/inferencepage';
+import AgxntsPage from '../agxntspage/agxntspage';
 
 // interfaces
 
@@ -351,11 +352,8 @@ export default function Dashboard({ toggleDashboard }: DashboardProps) {
                         {page === 'infxrence' && <div className={styles.infxrencePage}>
                             <InferencePage />
                         </div>}
-                        {page === 'kxbernetes' && <div className={styles.kxbernetesPage}>
-                            <h1>Kxbernetes</h1>
-                        </div>}
                         {page === 'agxnts' && <div className={styles.agxntsPage}>
-                            <h1>Agxnts</h1>
+                            <AgxntsPage />
                         </div>}
                         {page === 'stxrage' && <div className={styles.stxragePage}>
                             <h1>Stxrage</h1>

@@ -6,6 +6,8 @@ import { cxmpute_backend } from '../../../declarations/cxmpute_backend';
 import { Chain as ChainType } from '../../../declarations/cxmpute_backend/cxmpute_backend.did';
 import { Chain, chainData } from '../../lib/types';
 import { ethers } from 'ethers';
+import { idlFactory } from '../../lib/idlFactory'; // <-- import your ICRC DID here
+import { Principal } from '@dfinity/principal';
 
 interface LoggedInDashProps {
     user: User,
@@ -109,19 +111,75 @@ export default function LoggedInDash(user: LoggedInDashProps) {
         recipientAddress: string,
         amount: string // amount as a string (e.g. "10.5")
       ): Promise<void> {
+        // --- NEW: Handle ICP transfers via Plug wallet ---
+        if (chain === 'icp') {
+          // Define your ICP token canister ID (replace with your actual canister ID)
+          const ICRC_TOKEN_CANISTER_ID = 'xxxx-xxxx-xxxx-xxxxx-cai';
+          
+          // Check if the Plug wallet is installed
+          if (!(window as any).ic || !(window as any).ic.plug) {
+            console.error("Plug wallet not installed!");
+            return;
+          }
+          
+          try {
+            // Check if Plug is already connected; if not, request connection
+            const isConnected = await (window as any).ic.plug.isConnected();
+            if (!isConnected) {
+              await (window as any).ic.plug.requestConnect({
+                whitelist: [ICRC_TOKEN_CANISTER_ID],
+              });
+            }
+            
+            // Create an actor for your ICRC token canister using the provided idlFactory
+            const actor = await (window as any).ic.plug.createActor({
+              canisterId: ICRC_TOKEN_CANISTER_ID,
+              interfaceFactory: idlFactory,
+            });
+            
+            // Build the transfer argument. Adjust fields as required by your ICRC implementation.
+            const transferArg = {
+              from_subaccount: [], // or specify a subaccount, if needed
+              to: {
+                owner: Principal.fromText(recipientAddress),
+                subaccount: [],
+              },
+              fee: [],
+              created_at_time: [],
+              memo: [],
+              amount: BigInt(amount), // Make sure the string represents an integer amount (in the token's base unit)
+            };
+            
+            // Execute the transfer via Plug
+            const result = await actor.transfer(transferArg);
+            
+            if ('Ok' in result) {
+              console.log(`Transfer successful! Block height: ${result.Ok}`);
+            } else if ('Err' in result) {
+              console.error(`Transfer failed: ${JSON.stringify(result.Err)}`);
+            } else {
+              console.error("Unknown response received from canister.");
+            }
+          } catch (error: any) {
+            console.error("ICP token transfer failed:", error.message);
+          }
+          // End the function here for ICP
+          return;
+        }
+        
+        // --- EXISTING Ethers-based transfer for non-ICP chains ---
         const { chainID, tokenAddress, erc20abi } = chainData[chain];
-      
+        
         // Check if Metamask (or another Ethereum provider) is available
         if (!(window as any).ethereum) {
           console.error("Metamask is not installed!");
           return;
         }
-      
+        
         // Create an ethers provider and signer
         const provider = new ethers.BrowserProvider((window as any).ethereum);
-
         const signer = await provider.getSigner();
-      
+        
         // Check current chain and request a switch if necessary
         const currentChainId = await (window as any).ethereum.request({ method: 'eth_chainId' });
         if (currentChainId.toLowerCase() !== chainID.toLowerCase()) {
@@ -136,14 +194,13 @@ export default function LoggedInDash(user: LoggedInDashProps) {
             return;
           }
         }
-      
+        
         // Create a contract instance for the token using its ABI
         const tokenContract = new ethers.Contract(tokenAddress, JSON.parse(erc20abi!), signer);
-      
+        
         // Convert the amount to the token's smallest unit (assuming 18 decimals)
-        // Adjust decimals if your token has a different precision.
         const parsedAmount = ethers.parseUnits(amount, 18);
-      
+        
         // Call the transfer function on the token contract
         try {
           const tx = await tokenContract.transfer(recipientAddress, parsedAmount);
@@ -153,7 +210,8 @@ export default function LoggedInDash(user: LoggedInDashProps) {
         } catch (error) {
           console.error("Token transfer failed:", error);
         }
-      }
+    }
+      
 
 
     const numberPods = user.user.pods.length;

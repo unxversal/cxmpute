@@ -97,10 +97,37 @@ export default function Playground() {
                 </div>
             </div>
             <div className={styles.playgroundContent}>
+                <div className={styles.contentHeader}>
+                    <div className={styles.modelStatus}>Warm</div>
+                    <div className={styles.modelOpen}>
+                        <img
+                            src="/globe.svg"
+                            alt="My Pods icon"
+                            style={{
+                                width: '20px',
+                                height: '20px',
+                                filter: 'brightness(0) invert(1)',
+                            }}
+                        />
+                        <div>Open</div>
+                    </div>
+                    <div className={styles.modelRuns}>
+                        <img
+                            src="/brain-electricity.svg"
+                            alt="My Pods icon"
+                            style={{
+                                width: '20px',
+                                height: '20px',
+                                filter: 'brightness(0) invert(1)',
+                            }}
+                        />
+                        <div>25.4M RUNS</div>
+                    </div>
+                </div>
             </div>
             <div className={styles.playgroundFooter}>
                 <textarea
-                    placeholder="Type your message here. Hit SHIFT+ENTER to send your message."
+                    placeholder="Type your input here. Hit SHIFT+ENTER to send your input."
                     className={styles.chatInput}
                 />
             </div>

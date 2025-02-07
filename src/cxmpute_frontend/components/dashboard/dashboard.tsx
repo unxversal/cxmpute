@@ -8,6 +8,7 @@ import Menulist from '../menulist/menulist';
 import SignIn from '../signIn/signin';
 import LoggedInDash from '../loggedInDash/loggedInDash';
 import PodsPage from '../podspage/podspage';
+import InferencePage from '../inferencepage/inferencepage';
 
 // interfaces
 
@@ -253,7 +254,7 @@ const sampleUser: User = {
     infxrenceConfig: {
       priceRange: [10, 100]
     }
-  };
+};
   
   
 
@@ -348,7 +349,7 @@ export default function Dashboard({ toggleDashboard }: DashboardProps) {
                             <PodsPage user={ user ? user : undefined}/>
                         </div>}
                         {page === 'infxrence' && <div className={styles.infxrencePage}>
-                            <h1>Infxrence</h1>
+                            <InferencePage />
                         </div>}
                         {page === 'kxbernetes' && <div className={styles.kxbernetesPage}>
                             <h1>Kxbernetes</h1>

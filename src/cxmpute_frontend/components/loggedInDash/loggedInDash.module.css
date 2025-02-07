@@ -1,0 +1,105 @@
+.loggedInDash{
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    position: relative;
+}
+
+.topTainers,
+.bottomTainers{
+    width: 100%;
+    height: 50%;
+    display: flex;
+}
+
+.topTainer,
+.bottomTainer{
+    height: 100%;
+    width: 50%;
+    border-bottom: 1px solid #848484;
+    border-right: 1px solid #848484;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    
+
+}
+
+.header{
+    width: 100%;
+}
+
+.headerButtons{
+    width: 100%;
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+
+}
+
+.headerButtons button{
+    background-color: #101010;
+    border: none;
+    border-left: 1px solid #848484;
+    border-bottom: 1px solid #848484;
+    border-top: 1px solid #848484;
+    color: white;
+    padding: 20px;
+    margin-right: 10px;
+    outline: none;
+    margin: 0;
+    transition: all 0.3s ease;
+    cursor: pointer;
+}
+
+.headerButtons select{
+    background-color: #101010;
+    border: none;
+    border-left: 1px solid #848484;
+    border-bottom: 1px solid #848484;
+    border-top: 1px solid #848484;
+    color: white;
+    padding: 20px;
+    margin-right: 10px;
+    outline: none;
+    margin: 0;
+    transition: all 0.3s ease;
+    cursor: pointer;
+}
+
+.headerButtons button:hover{
+    background-color: white;
+    color: black;
+}
+
+.bottom{
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: flex-start;
+    align-items: flex-end;
+    padding-left: 3vw;
+    padding-bottom: 2vw;
+}
+
+.bottom p{
+    font-size: 7vw;
+    margin: 0;
+}
+
+.titletainer p{
+    font-size: 1vw;
+    padding-left: 10px;
+    color: #848484;
+}
+
+.titletainer h1{
+    font-size: 7vw;
+    font-family: 'Helvetica Neue';
+    font-weight: 200;
+    margin: 0;
+    padding: 0;
+}

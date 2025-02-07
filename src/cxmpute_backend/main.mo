@@ -4,6 +4,7 @@ import Types "Types";
 import Text "mo:base/Text";
 import Debug "mo:base/Debug";
 import Blob "mo:base/Blob";
+import Error "mo:base/Error";
 
 actor UserManager {
 
@@ -82,4 +83,51 @@ actor UserManager {
   public query func getAllUsers() : async [Types.User] {
     return userDB.internalUsers;
   };
+
+  public func changeUserChain(walletAddress : Text, oldChain : Types.Chain, newChain : Types.Chain) : async ?Types.User {
+    // Find the user by walletAddress and the old chain.
+    let maybeUser = findUser(walletAddress, oldChain);
+    switch maybeUser {
+      case (?user) {
+        // Create a new user record that is identical except for the new chain.
+        let updatedUser : Types.User = {
+          walletAddress = user.walletAddress;
+          userID = user.userID;
+          provider = user.provider;
+          chain = newChain;
+          pods = user.pods;
+          cxmputeBalance = user.cxmputeBalance;
+          stxres = user.stxres;
+          totalStxrage = user.totalStxrage;
+          infxrenceConfig = user.infxrenceConfig;
+        };
+
+        // Find the index of the found user in the stable array.
+        let indexOpt = Array.indexOf<Types.User>(
+          user,
+          userDB.internalUsers,
+          func (a : Types.User, b : Types.User) : Bool {
+            a.walletAddress == b.walletAddress and a.userID == b.userID and a.chain == b.chain
+          }
+        );
+        switch indexOpt {
+          case (?i) {
+            // Replace the user at index i by mapping over the array.
+            let newUsers = Array.mapEntries<Types.User, Types.User>(
+              userDB.internalUsers,
+              func (elem, j) : Types.User {
+                if (j == i) { updatedUser } else { elem }
+              }
+            );
+            userDB.internalUsers := newUsers;
+            return ?updatedUser;
+          };
+          case null { return null; }
+        }
+      };
+      case null { return null; }
+    }
+  };
+
+
 }

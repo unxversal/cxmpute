@@ -71,10 +71,18 @@
     height: 100vh;
     display: flex;
     justify-content: center;
-    align-items: center;
 }
 
-.dashboardPage,
+.dashboardPage{
+    width: 100%;
+    height: 90%;
+    overflow-y: scroll;
+    /* height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center; */
+}
+
 .homePage{
     width: 100%;
     height: 100%;

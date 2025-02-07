@@ -44,9 +44,9 @@ export default function Menulist({setPage}: MenuProps) {
                             filter: 'brightness(0) invert(1)',
                         }}
                         />
-                        MY PODS
+                        MY PXDS
                     </li>
-                    <li
+                    {/* <li
                         onClick={() => setPage('podMarket')}
                         
                     >
@@ -62,8 +62,8 @@ export default function Menulist({setPage}: MenuProps) {
                         }}
                         />
                         POD MARKET
-                    </li>
-                    <li
+                    </li> */}
+                    {/* <li
                         onClick={() => setPage('serverless')}
                         
                     >
@@ -79,7 +79,7 @@ export default function Menulist({setPage}: MenuProps) {
                         }}
                         />
                         SXRVERLESS
-                    </li>
+                    </li> */}
                     <li
                         onClick={() => setPage('infxrence')}
                         
@@ -97,7 +97,7 @@ export default function Menulist({setPage}: MenuProps) {
                         />
                         INFXRENCE
                     </li>
-                    <li
+                    {/* <li
                         onClick={() => setPage('kxbernetes')}
                         
                     >
@@ -113,7 +113,7 @@ export default function Menulist({setPage}: MenuProps) {
                         }}
                         />
                         KXBERNETES
-                    </li>
+                    </li> */}
                     <li
                         onClick={() => setPage('agxnts')}
                         
@@ -148,7 +148,7 @@ export default function Menulist({setPage}: MenuProps) {
                         />
                         STXRAGE
                     </li>
-                    <li
+                    {/* <li
                         onClick={() => setPage('daiArchxve')}
                         
                     >
@@ -164,7 +164,7 @@ export default function Menulist({setPage}: MenuProps) {
                         }}
                         />
                         dAI ARCHXVE
-                    </li>
+                    </li> */}
                     <li
                         onClick={() => setPage('playground')}
                         

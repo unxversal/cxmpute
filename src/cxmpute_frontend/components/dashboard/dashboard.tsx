@@ -6,6 +6,7 @@ import { cxmpute_backend } from './../../../declarations/cxmpute_backend';
 import DecryptedText from '../decryptedText/decryptedText';
 import Menulist from '../menulist/menulist';
 import SignIn from '../signIn/signin';
+import LoggedInDash from '../loggedInDash/loggedInDash';
 
 // interfaces
 
@@ -132,10 +133,64 @@ type DashboardProps = {
     toggleDashboard: () => void;
 };
 
+const sampleUser: User = {
+    walletAddress: "0xABCDEF1234567890",
+    userID: "generatedUserId42",
+    provider: false,
+    chain: "starknet",  // any valid Chain value: "icp", "metis", etc.
+    pods: [
+      {
+        name: "MyFirstGPU",
+        files: {
+          ID: "file-xyz",
+          bucketID: "myBucket123"
+        },
+        priceRange: [10, 500],
+        type: "gpuVM",  // e.g., "gpuVM", "serverlessJS", or one of the model strings
+        status: "deploying",  // or "deployed" / "undeployed"
+        memory: 4096,  // in MB, for instance
+        cpu: 4,
+        gpu: 1,
+        storage: 100,  // in GB
+        nodes: 1
+      },
+      {
+        name: "MongoDBInstance",
+        files: {
+          ID: "file-abc",
+          bucketID: "bucket-mongo"
+        },
+        priceRange: [0, 50],
+        type: "mongodb",
+        status: "deployed",
+        memory: 2048,
+        cpu: 2,
+        gpu: 0,
+        storage: 50,
+        nodes: 3
+      }
+    ],
+    cxmputeBalance: 1234,
+    stxres: [
+      {
+        file: {
+          ID: "backup-01",
+          bucketID: "bucket-backups"
+        },
+        size: 99999
+      }
+    ],
+    totalStxrage: 888888,
+    infxrenceConfig: {
+      priceRange: [10, 100]
+    }
+  };
+  
+
 export default function Dashboard({ toggleDashboard }: DashboardProps) {
 
     const [page, setPage] = useState('home');
-    const [user, setUser] = useState<User | null>(null);
+    const [user, setUser] = useState<User | null>(sampleUser);
     const [selectedChain, setSelectedChain] = useState<string>('');
 
     // useEffect runs on component mount
@@ -211,7 +266,7 @@ export default function Dashboard({ toggleDashboard }: DashboardProps) {
                             <Cobe markerlist={markerlist}/>
                         </div>)}
                         {page === 'dashboard' && <div className={styles.dashboardPage}>
-                            {user &&<h1>Dashboard</h1>}
+                            {user &&<LoggedInDash user={user} setPage={setPage} setUser={setUser} />}
                             {!user && <SignIn 
                                 selectedChain={selectedChain} 
                                 setSelectedChain={setSelectedChain}

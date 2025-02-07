@@ -10,6 +10,7 @@ import LoggedInDash from '../loggedInDash/loggedInDash';
 import PodsPage from '../podspage/podspage';
 import InferencePage from '../inferencepage/inferencepage';
 import AgxntsPage from '../agxntspage/agxntspage';
+import StxragePage from '../stxragepage/stxragepage';
 
 // interfaces
 
@@ -356,7 +357,7 @@ export default function Dashboard({ toggleDashboard }: DashboardProps) {
                             <AgxntsPage />
                         </div>}
                         {page === 'stxrage' && <div className={styles.stxragePage}>
-                            <h1>Stxrage</h1>
+                            <StxragePage user={ user ? user : undefined}/>
                         </div>}
                         {page === 'daiArchxve' && <div className={styles.daiArchxvePage}>
                             <h1>dAI Archxve</h1>

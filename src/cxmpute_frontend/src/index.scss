@@ -166,3 +166,25 @@ button[type="submit"] {
     cursor: default;
 }
 
+@media screen and (max-width: 400px) {
+  .allletters,
+  .encrypted,
+  .revealed{
+      font-size: 15px;
+  }
+
+  .encryptedTitle,
+  .revealedTitle{
+      font-size: 40px;
+  }
+}
+
+#cxmplist{
+  font-size: 15px;
+}
+
+@media screen and (max-width: 500px) {
+  #cxmplist{
+      font-size: 10px;
+  }
+}

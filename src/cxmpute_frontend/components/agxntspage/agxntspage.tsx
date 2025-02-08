@@ -47,7 +47,7 @@ export default function AgxntsPage() {
     return (
         <div className={styles.podspage}>
             <div className={styles.header}>
-                <div className={styles.title}>INFXRENCE</div>
+                <div className={styles.title}>AGXNT</div>
             </div>
             <div className={styles.pods}>
                 {agents.map((agent, index) => (

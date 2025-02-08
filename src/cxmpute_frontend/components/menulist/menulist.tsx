@@ -200,7 +200,7 @@ export default function Menulist({setPage}: MenuProps) {
                         CHXT
                     </li>
                     <li
-                        onClick={() => setPage('provider')}
+                        // onClick={() => setPage('provider')}
                         
                     >
                         <img
@@ -217,7 +217,7 @@ export default function Menulist({setPage}: MenuProps) {
                         PRXVIDER
                     </li>
                     <li
-                        onClick={() => setPage('settings')}
+                        // onClick={() => setPage('settings')}
                         
                     >
                         <img
@@ -252,7 +252,9 @@ export default function Menulist({setPage}: MenuProps) {
                         }}
                         />
                     </li>
-                    <li>
+                    <li
+                        onClick={() => window.open('https://discord.gg/vE3xvFsZA8', '_blank')}
+                    >
                         <img
                         src="/discord.svg"
                         alt="Discord icon"
@@ -266,7 +268,9 @@ export default function Menulist({setPage}: MenuProps) {
                         }}
                         />
                     </li>
-                    <li>
+                    <li
+                        onClick={() => window.open('https://x.com/cxmpute', '_blank')}
+                    >
                         <img
                         src="/x.svg"
                         alt="X icon"

@@ -1,0 +1,151 @@
+.playground{
+    height: 100%;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+}
+
+.left{
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+}
+
+.right{
+    height: 100%;
+    flex: 0 1 400px;
+    border-left: 1px solid #848484;
+}
+
+.createChat{
+    border: 0;
+    border-bottom: 1px solid #848484;
+    padding: 20px;
+    outline: none;
+    font-family: 'Helvetica Neue';
+    font-weight: 200;
+    background-color: #101010;
+    color: white;
+    cursor : pointer;
+    transition: all 0.2s ease-in-out;
+    width: 100%;
+    font-size: 2rem;
+}
+
+.createChat:hover{
+    background-color: white;
+    color: black;
+}
+
+.chatItem{
+    width: 100%;
+    text-align: left;
+    padding: 20px;
+    border-bottom: 1px solid #848484;
+    display: flex;
+    transition: all 0.2s ease-in-out;
+}
+
+.chatItem:hover{
+    background-color: white;
+    color: black;
+    cursor: pointer;
+}
+
+.playgroundHeader{
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0;
+    margin: 0;
+}
+
+.playgroundHeader select{
+    background-color: #101010;
+    color: white;
+    border: 0;
+    border-left: 1px solid #848484;
+    border-bottom: 1px solid #848484;
+    padding: 20px;
+    outline: none;
+    cursor: pointer;
+    transition: all 0.2s ease-in-out;
+}
+
+.playgroundHeader h1{
+    padding: 0;
+    margin: 0;
+    font-weight: 200;
+    margin-left: 10px;
+}
+
+.playgroundContent{
+    width: 100%;
+    height: 100%;
+    /* display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    flex-direction: column; */
+    gap: 20px;
+    overflow-y: scroll;
+    text-align: left;
+}
+
+.chatContent{
+    font-size: 15px;
+    padding: 40px;
+}
+
+.chatContent a{
+    text-decoration: none;
+    color: aquamarine;
+}
+
+.playgroundFooter{
+    width: 100%;
+    background-color: #101010;
+    border: 0;
+    border-top: 1px solid #848484;
+}
+
+.playgroundFooter textarea{
+    background-color: #101010;
+    color: white;
+    width: 100%;
+    border: 0;
+    outline: none;
+    transition: all 0.2s ease-in-out;
+    padding: 20px;
+    font-family: "Helvetica Neue";
+    font-weight: 200;
+}
+
+.contentHeader{
+    width: 100%;
+    display: flex;
+
+    border-bottom: 1px solid #848484;
+    padding: 0;
+    margin: 0;
+    font-size: 1vw;
+}
+
+.modelRuns, .modelOpen{
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-left: 20px;
+}
+
+.modelStatus{
+    background-color: #00d68f;
+    color: #00764f;
+    padding: 10px;
+    margin: 10px;
+    border-radius: 10px;
+}

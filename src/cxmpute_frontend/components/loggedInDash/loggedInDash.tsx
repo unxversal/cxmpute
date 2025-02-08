@@ -247,7 +247,7 @@ export default function LoggedInDash(user: LoggedInDashProps) {
                                 </select>
                                 <button
                                 className={styles.headerButton}
-                                onClick={handleConfirmChainChange}
+                                //onClick={handleConfirmChainChange}
                                 >
                                 Confirm
                                 </button>

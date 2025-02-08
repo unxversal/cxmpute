@@ -137,16 +137,22 @@ export default function Hero({ toggleDashboard }: HeroProps) {
                 />
                 <div className={styles.subtitle}>
                     <p>the decentralized backend for the web</p>
-                    <DecryptedText 
-                        text="WHITEPAPER" 
-                        className="revealed"
-                        encryptedClassName="encrypted"
-                    />
-                    <DecryptedText 
-                        text="GET INVOLVED" 
-                        className="revealed"
-                        encryptedClassName="encrypted"
-                    />
+                    <div onClick={() => window.open('https://drive.google.com/file/d/1JN7-61fcTdFn3OM5Z-pAXi1VEUmuLX8p/view?usp=sharing', '_blank')}>
+                        <DecryptedText 
+                            text="WHITEPAPER" 
+                            className="revealed"
+                            encryptedClassName="encrypted"
+                        />
+                    </div>
+                    
+                    <div onClick={() => window.open('https://drive.google.com/file/d/1rax3ujJv0Bw7Z30V3s9pDPC1Q0dhCoeG/view?usp=sharing', '_blank')}>
+                        <DecryptedText 
+                            text="GET INVOLVED" 
+                            className="revealed"
+                            encryptedClassName="encrypted"
+                        />
+                    </div>
+                    
                     <button className={styles.button} onClick={toggleDashboard}>
                         <DecryptedText 
                             text="OPEN CXMPUTE" 

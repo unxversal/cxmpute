@@ -12,6 +12,7 @@ import InferencePage from '../inferencepage/inferencepage';
 import AgxntsPage from '../agxntspage/agxntspage';
 import StxragePage from '../stxragepage/stxragepage';
 import Playground from '../playground/playground';
+import ChxtPage from '../chatpage/chatpage';
 
 // interfaces
 
@@ -385,7 +386,7 @@ export default function Dashboard({ toggleDashboard }: DashboardProps) {
                             <Playground />
                         </div>}     
                         {page === 'chat' && <div className={styles.chatPage}>        
-                            <h1>Chxt</h1>       
+                            <ChxtPage />  
                         </div>}
                         {page === 'provider' && <div className={styles.providerPage}>        
                             <h1>Prxvider</h1>       

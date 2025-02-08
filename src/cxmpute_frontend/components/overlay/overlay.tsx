@@ -49,9 +49,9 @@ fontSize: "8vw" }}>CXMPUTE</div>
               </div>
               <br />
               <div
+                id="cxmplist"
                 style={{
                   fontFamily: "Helvetica Neue",
-                  fontSize: "15px",
                   fontWeight: "200",
                   textAlign: "center",
                   padding: "5px",

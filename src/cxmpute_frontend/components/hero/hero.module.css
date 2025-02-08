@@ -45,3 +45,30 @@
     background-color: white;
     color: black;
 }
+
+@media screen and (max-width: 400px) {
+    .subtitle p{
+        font-size: 15px;
+    }
+}
+
+@media screen and (max-width: 600px) {
+    
+}
+
+@media screen and (max-width: 1200px) {
+    .hero{
+        flex-direction: column;
+        overflow-y: scroll;
+        text-align: center;
+    }
+    .left, .right{
+        width: auto;
+        height: 400px;
+    }
+
+    .button,
+    .right{
+        display: none;
+    }
+}

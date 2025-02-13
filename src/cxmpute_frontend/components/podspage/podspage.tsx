@@ -22,6 +22,9 @@ interface UpdatedPodParams{
     numVMs?: number;
     priceType?: 'hourly' | 'monthly';
     deployTimer?: number;
+    matchID?: number;
+    podID?: number;
+    httpKey?: string;
 }
 
 const podoptions: PodType[] = [
@@ -87,6 +90,7 @@ export default function PodsPage({ user }: PodsPageParams) {
     const [podType, setPodType] = useState<PodType>('generalVM');
     const [newPodName, setNewPodName]= useState('');
     const [numGPUs, setNumGPUs] = useState(0);
+    const [selectedPod, setSelectedPod] = useState<Pod | null>(null);
 
     const handleSubmit = (e: React.FormEvent) => {
         e.preventDefault();
@@ -148,7 +152,14 @@ export default function PodsPage({ user }: PodsPageParams) {
                     deployTimer: Number(formValues.deployTimer),
                 }
                 break;
-            // Add cases for other PodTypes as needed
+            case 'serverlessPY':
+                (constructedPod as Pod) = {
+                    name: formValues.pxdName,
+                    priceRange: [0,0],
+                    type: podType,
+                    status: 'undeployed',
+                }
+                break;
             default:
                 break;
         }
@@ -429,7 +440,12 @@ export default function PodsPage({ user }: PodsPageParams) {
             case 'serverlessPY':
                 return (
                     <>
+                        <label>Serverless Python</label>
+                        <label>ZIP File:</label>
+                        <input type="file" accept=".zip" name="files" className={styles.headerButtonInput} required />
+
                         
+                             
                     </>
                 )
 
@@ -437,6 +453,47 @@ export default function PodsPage({ user }: PodsPageParams) {
                 return null;
         }
     };
+
+    const handleDeployPod = async () => {
+        switch (selectedPod?.type) {
+            case 'generalVM':
+                // call backend to match pod to provider
+                // show user the matched provider cost and time (if applicable)
+                // upon user confirmation, call backend to deploy pod
+                // backend adds connection info for pod
+                // user alerted to verify connection info
+                // connection key generated and shown to user
+                // trigger refetch of User
+                break;
+            case 'memoryVM':
+                // 
+                break;
+            case 'cpuVM':
+                //
+                break;
+            case 'storageVM':
+                //
+                break;
+            case 'gpuVM':
+                //
+                break;
+            case 'serverlessPY':
+                // call backend to match pod to provider
+                // backend selects three providers and they install the serverless code
+                // generate serverless key for endpoint
+                // store http key
+                // return http key to user
+                // trigger refetch of User
+                break;
+            case 'serverlessJS':
+                // 
+                break;
+            case 'serverlessTS':
+                // 
+                break;
+            default:
+        }
+    }
 
     return (
         <div className={styles.podspage}>

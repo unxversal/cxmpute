@@ -172,7 +172,7 @@
 .formRight input{
     padding: 10px;
     /* color: black;  */
-    background-color: rgb(32, 32, 32);
+    background-color: #202020;
     /* background-color: #101010;
     color: white; */
     color: wheat;
@@ -199,6 +199,8 @@
 .formRight label{
     font-size: 16px;
     color: #848484;
+    width: 100%;
+    text-align: center;
 }
 
 .formLeft h1{

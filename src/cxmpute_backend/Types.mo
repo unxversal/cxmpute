@@ -91,15 +91,21 @@ module Types {
 
   // FILE - just a record with ID and bucketID
   public type File = {
-    ID : Text;
-    bucketID : Text;
+    ID : Text;          // some unique ID for the file
+    bucketIDs : [Text]; // principal IDs of each bucket canister that holds part of the file
   };
+
 
   // PODSTATUS - a variant for deployed, deploying, or undeployed
   public type PodStatus = {
     #deployed;
     #deploying;
     #undeployed
+  };
+
+  public type FileChunk = {
+    chunk : Blob;
+    chunkID : Nat;
   };
 
   // POD - record describing a pod
@@ -139,5 +145,6 @@ module Types {
     totalStxrage : Nat;
     infxrenceConfig : InfxrenceConfig;
   };
+
 
 }

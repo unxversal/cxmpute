@@ -68,6 +68,7 @@ export type PodType =
 'serverlessPY' |
 'serverlessJS' |
 'serverlessTS' |
+'vxctor' |
 'mongodb' |
 'postgresql' |
 'mysql' |
@@ -80,21 +81,61 @@ Model
 
 export interface File{
 ID: string;
-bucketID: string;
+bucketID: string[];
 }
 
 export interface Pod {
-name: string;
-files?: File;
-priceRange: number[];
-type: PodType;
-status: 'deployed' | 'deploying' | 'undeployed';
-memory?: number;
-cpu?: number;
-gpu?: number;
-storage?: number;
-nodes?: number;
+  name: string;
+  files?: File;
+  priceRange: number[];
+  type: PodType;
+  status: 'deployed' | 'deploying' | 'undeployed';
+  memory?: number;
+  vCPU?: number;
+  gpu?: string;
+  storage?: number;
+  nodes?: number;
+  numVMs?: number;
+  priceType?: 'hourly' | 'monthly';
+  deployTimer?: number;
+  matchID?: number;
+  podID?: number;
+  httpKey?: string;
+  numRequests?: number;
+  numTokensIn?: number;
+  numTokensOut?: number;
+  numSxrverlessExecutions?: number;
+  dbReplicationNumber?: number;
+  vectorDimension?: number;
 }
+
+interface SSHConnectionInfo {
+  // The IP address or hostname of the VM.
+  ipAddress: string;
+
+  // The port for SSH connection (default is 22, but this could be configurable).
+  port: number;
+
+  // The username to use for authentication (e.g., 'root' for Linux-based systems).
+  username: string;
+
+  // The SSH private key or the key pair used for authentication.
+  privateKey: string; // Could also be publicKey if using key-based auth on the client side.
+
+  // Optionally, a public key to be used on the VM side for validation. (Optional, only if needed).
+  publicKey?: string;
+
+  // The expiration time of the rental session in ISO 8601 format (e.g., "2025-02-13T12:00:00Z").
+  expirationTime: string;
+
+  // A unique token that can be used for additional security or time-based access (JWT or similar).
+  accessToken: string;
+
+  // An optional field for additional info, like a VM-specific identifier or reference.
+  vmIdentifier?: string;
+}
+
+
 
 export interface Stxred{
 file: File;
@@ -209,6 +250,7 @@ export const chainData: {
     'serverlessPY',
     'serverlessJS',
     'serverlessTS',
+    'vxctor',
     'mongodb',
     'postgresql',
     'mysql',

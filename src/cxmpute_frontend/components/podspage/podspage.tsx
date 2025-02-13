@@ -3,6 +3,7 @@ import * as React from 'react';
 import { User } from '../../lib/types';
 import { useState } from 'react';
 import { PodType, Model, podString, Pod } from '../../lib/types';
+import { keyframes } from 'framer-motion';
 
 interface PodsPageParams{
     user?: User;
@@ -37,6 +38,7 @@ const podoptions: PodType[] = [
     'serverlessPY',
     'serverlessJS',
     'serverlessTS',
+    'vxctor',
     'mongodb',
     'postgresql',
     'mysql',
@@ -153,6 +155,8 @@ export default function PodsPage({ user }: PodsPageParams) {
                 }
                 break;
             case 'serverlessPY':
+                // upload file to backend, returns File object, then construct pod with File object
+
                 (constructedPod as Pod) = {
                     name: formValues.pxdName,
                     priceRange: [0,0],
@@ -160,7 +164,44 @@ export default function PodsPage({ user }: PodsPageParams) {
                     status: 'undeployed',
                 }
                 break;
+            case 'serverlessJS':
+                // upload file to backend, returns File object, then construct pod with File object
+
+                (constructedPod as Pod) = {
+                    name: formValues.pxdName,
+                    priceRange: [0,0],
+                    type: podType,
+                    status: 'undeployed',
+                }
+                break;
+            case 'serverlessTS':
+                // upload file to backend, returns File object, then construct pod with File object
+
+                (constructedPod as Pod) = {
+                    name: formValues.pxdName,
+                    priceRange: [0,0],
+                    type: podType,
+                    status: 'undeployed',
+                }
+                break;
+            case 'vxctor':
+                (constructedPod as Pod) = {
+                    name: formValues.pxdName,
+                    priceRange: [0,0],
+                    type: podType,
+                    status: 'undeployed',
+                    vectorDimension: Number(formValues.embeddings),
+                    dbReplicationNumber: Number(formValues.replication),
+                }
+                break;
             default:
+                (constructedPod as Pod) = {
+                    name: formValues.pxdName,
+                    priceRange: [0,0],
+                    type: podType,
+                    status: 'undeployed',
+                    memory: Number(formValues.ram),
+                }
                 break;
         }
     
@@ -168,6 +209,8 @@ export default function PodsPage({ user }: PodsPageParams) {
     
         console.log('Constructed Pod:', constructedPod);
         // Call your backend function here with formDataToSubmit
+        // Pods are directly stored, user updated, user returned to frontend, UI updated
+
         // Example: await backendFunction(formDataToSubmit);
         setFormOpen(false);
     };
@@ -438,19 +481,101 @@ export default function PodsPage({ user }: PodsPageParams) {
                 );
 
             case 'serverlessPY':
+
+                {
+                    // get API Keys
+                    // create a select for API keys or create a new one
+                    // create or get api key
+                }
+
                 return (
                     <>
                         <label>Serverless Python</label>
-                        <label>ZIP File:</label>
-                        <input type="file" accept=".zip" name="files" className={styles.headerButtonInput} required />
+                        <label>Zip File:</label>
+                        <input type="file" accept=".zip" name="files" className={styles.headerButtonFileInput} />          
+                    </>
+                )
 
-                        
-                             
+            case 'serverlessJS':
+                
+                {
+                    // get API Keys
+                    // create a select for API keys or create a new one
+                    // create or get api key
+                }
+
+                return (
+                    <>
+                        <label>Serverless Javascript</label>
+                        <label>Zip File:</label>
+                        <input type="file" accept=".zip" name="files" className={styles.headerButtonFileInput} />          
+                    </>
+                )
+            
+            case 'serverlessTS':
+
+                {
+                    // get API Keys
+                    // create a select for API keys or create a new one
+                    // create or get api key
+                }
+
+                return (
+                    <>
+                        <label>Serverless Typescript</label>
+                        <label>Zip File:</label>
+                        <input type="file" accept=".zip" name="files" className={styles.headerButtonFileInput} />          
+                    </>
+                )
+            
+            case 'vxctor':
+                {
+                    // get API Keys
+                    // create a select for API keys or create a new one
+                    // create or get api key
+                }
+
+                return (
+                    <>
+                        <label>Vxctor Database</label>
+                        <label>Embedding Dimensions</label>
+                        <input type="number" placeholder="Embedding Dimensions" name="embeddings" className={styles.headerButtonInput} />
+
+                        <label>Replication Factor</label>
+                        <input type="number" placeholder="Replication Factor" name="replication" className={styles.headerButtonInput} />
                     </>
                 )
 
             default:
-                return null;
+                return (
+                    <>
+                        <label>Hosted Infxrence</label>
+
+                        {
+                            // get API Keys
+                            // create a select for API keys or create a new one
+                            // create or get api key
+                        }
+
+                        <label>Optional - Select Minimum RAM</label>
+                        <select name="ram" className={styles.headerButtonSelect}>
+                            <option value="">Select Minimum RAM</option>
+                            <option value="8">8 GiB</option>
+                            <option value="12">12 GiB</option>
+                            <option value="16">16 GiB</option>
+                            <option value="20">20 GiB</option>
+                            <option value="24">24 GiB</option>
+                            <option value="32">32 GiB</option>
+                            <option value="48">48 GiB</option>
+                            <option value="64">64 GiB</option>
+                            <option value="96">96 GiB</option>
+                            <option value="128">128 GiB</option>
+                            <option value="256">256 GiB</option>
+                            <option value="384">384 GiB</option>
+                            <option value="512">512 GiB</option>
+                        </select>
+                    </>
+                )
         }
     };
 
@@ -492,6 +617,53 @@ export default function PodsPage({ user }: PodsPageParams) {
                 // 
                 break;
             default:
+                // call backend to match pod to provider
+                // generate key for endpoint
+                // store key
+                // return key to user
+                // trigger refetch of User
+                break;
+        }
+    }
+
+    const getPodConnectionDetails = () => {
+        switch (selectedPod?.type) {
+            case 'generalVM':
+                // get connection details from backend
+                // display hidden
+                // zkemail auth to view keys
+                // show keys/connection info
+                break;
+            case 'memoryVM':
+                // 
+                break;
+            case 'cpuVM':
+                //
+                break;
+            case 'storageVM':
+                //
+                break;
+            case 'gpuVM':
+                //
+                break;
+            case 'serverlessPY':
+                // get connection details from backend
+                // display hidden
+                // zkemail auth to view keys
+                // show keys/connection info
+                break;
+            case 'serverlessJS':
+                // 
+                break;
+            case 'serverlessTS':
+                // 
+                break;
+            default:
+                // get connection details from backend
+                // display hidden
+                // zkemail auth to view keys
+                // show keys/connection info
+                break;
         }
     }
 

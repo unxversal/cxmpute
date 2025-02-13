@@ -66,7 +66,7 @@ fontSize: "8vw" }}>CXMPUTE</div>
         </div>
       </div>
 
-      {/* <footer
+      <footer
         style={{
           position: "absolute",
           bottom: 20,
@@ -84,11 +84,50 @@ fontSize: "8vw" }}>CXMPUTE</div>
             textAlign: "right",
             color: "white",
             listStyle: "none",
+            cursor: "pointer",
+          }}
+          onClick={() => {
+            window.open("https://drive.google.com/file/d/1rax3ujJv0Bw7Z30V3s9pDPC1Q0dhCoeG/view", "_blank");
           }}
         >
-          <li>ABOUT</li>
+          <li>JOIN</li>
         </ul>
-      </footer> */}
+        <ul
+          className="footer"
+          style={{
+            flex: "1 1 0%",
+            fontSize: 12,
+            lineHeight: "1em",
+            textAlign: "right",
+            color: "white",
+            listStyle: "none",
+            cursor: "pointer",
+          }}
+          onClick={() => {
+            window.open("https://github.com/unxversal/", "_blank");
+          }}
+        >
+          <li>GITHUB</li>
+        </ul>
+        <ul
+          className="footer"
+          style={{
+            flex: "1 1 0%",
+            fontSize: 12,
+            lineHeight: "1em",
+            textAlign: "right",
+            color: "white",
+            listStyle: "none",
+            cursor: "pointer",
+          }}
+          onClick={() => {
+            window.open("https://x.com/cxmpute", "_blank");
+          }}
+        >
+          <li>TWITTER</li>
+        </ul>
+        
+      </footer>
     </div>
   );
 };

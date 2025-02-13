@@ -223,6 +223,12 @@ export default function LoggedInDash(user: LoggedInDashProps) {
                     {!isChangingChain ? (<div className={styles.headerButtons}>
                                 <button
                                     className={styles.headerButton}
+                                    // onClick={handleChangeChainClick}
+                                >
+                                    DISCONNECT WALLET
+                                </button>
+                                <button
+                                    className={styles.headerButton}
                                     onClick={handleChangeChainClick}
                                 >
                                     CHANGE CHAIN

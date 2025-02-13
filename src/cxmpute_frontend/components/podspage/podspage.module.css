@@ -119,3 +119,88 @@
     color: rgb(158, 55, 0);
     text-align: right;
 }
+
+.createPodForm{
+    position: absolute;
+    width: 100vw;
+    height: 100vh;
+    top: 0;
+    left: 0;
+    background-color: rgba(0,0,0,0.5);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.form{
+    /* background-color: rgb(36, 36, 36); */
+
+    width: 50%;
+    height: 50%;
+    overflow-y: scroll;
+    display: flex;
+    flex-direction: row;
+    font-weight: 200;
+}
+
+.form h1, .form h2{
+    font-weight: 200;
+}
+
+.formLeft{
+    width: 60%;
+    /* background-color: rgb(59, 59, 59); */
+    padding: 20px;
+    border: 1px solid #848484;
+    background-color: #101010;
+}
+
+.formLeft h2{
+    color: #848484;
+}
+
+.formRight{
+    width: 40%;
+    border: 1px solid #848484;
+    border-left: 0;
+    background-color: #101010;
+    overflow-y: scroll;
+}
+
+.formRight select,
+.formRight input{
+    padding: 10px;
+    /* color: black;  */
+    background-color: rgb(32, 32, 32);
+    /* background-color: #101010;
+    color: white; */
+    color: wheat;
+    outline: none;
+    border: none;
+    /* border-top: 1px solid white;
+    border-bottom: 1px solid white; */
+    width: 100%;
+}
+
+.formClose{
+    position: absolute;
+    top: 0;
+    right: 0;
+    left: auto;
+    padding: 20px;
+    cursor: pointer;
+}
+
+.formRight{
+    padding-top: 20px;
+}
+
+.formRight label{
+    font-size: 16px;
+    color: #848484;
+}
+
+.formLeft h1{
+    color: wheat;
+}

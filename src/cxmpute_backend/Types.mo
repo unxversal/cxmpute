@@ -1,4 +1,5 @@
 // In a file called "Types.mo"
+import List "mo:base/List";
 
 module Types {
 
@@ -90,9 +91,23 @@ module Types {
   };
 
   // FILE - just a record with ID and bucketID
+  // public type File = {
+  //   ID : Text;          // some unique ID for the file
+  //   bucketIDs : [Text]; // principal IDs of each bucket canister that holds part of the file
+  // };
+
+  public type FileChunk = {
+    chunk : Blob;
+    chunkID : Nat;
+    bucketID : ?Nat;
+  };
+
+
   public type File = {
-    ID : Text;          // some unique ID for the file
-    bucketIDs : [Text]; // principal IDs of each bucket canister that holds part of the file
+    name : Text;
+    chunks : [FileChunk];
+    totalSize : Nat; 
+    fileType : Text;
   };
 
 
@@ -103,10 +118,7 @@ module Types {
     #undeployed
   };
 
-  public type FileChunk = {
-    chunk : Blob;
-    chunkID : Nat;
-  };
+  
 
   // POD - record describing a pod
   public type Pod = {
@@ -139,9 +151,9 @@ module Types {
     userID : Text;
     provider : Bool;
     chain : Chain;
-    pods : [Pod];
+    pods : List.List<Pod>;
     cxmputeBalance : Nat;
-    stxres : [Stxred];
+    stxres : List.List<Stxred>;
     totalStxrage : Nat;
     infxrenceConfig : InfxrenceConfig;
   };

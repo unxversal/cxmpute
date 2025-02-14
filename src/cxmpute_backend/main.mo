@@ -5,91 +5,71 @@ import Text "mo:base/Text";
 import Debug "mo:base/Debug";
 import Blob "mo:base/Blob";
 import Error "mo:base/Error";
+import Buckets "Buckets";
+import Buffer "mo:base/Buffer";
+import Iter "mo:base/Iter";
+import List "mo:base/List";
 
 actor UserManager {
 
-  // Stable data store for users
-  stable var userDB : {
-    var internalUsers : [Types.User]
-  } = {
-    var internalUsers = []
-  };
-
-  // Counter to generate unique IDs for users
+  stable var userDB : List.List<Types.User> = List.nil<Types.User>();
   stable var userIdCounter : Nat = 0;
 
-  // Generate a unique ID for a user based on wallet address and chain
   func generateUserID() : Text {
     userIdCounter += 1;
     Nat.toText(userIdCounter)
   };
 
-  // Helper: find a user by (walletAddress, chain).
-  // Returns ?User or null if not found.
   private func findUser(walletAddress : Text, chain : Types.Chain) : ?Types.User {
-    Array.find(userDB.internalUsers, func (user : Types.User) : Bool {
+    List.find<Types.User>(userDB, func (user : Types.User) : Bool {
       user.walletAddress == walletAddress and user.chain == chain
     })
   };
 
-  // Step 2 recap: store a brand new user (if you explicitly want that).
   public func storeUser(walletAddress : Text, chain : Types.Chain) : async () {
     let newUser : Types.User = {
       walletAddress = walletAddress;
-      userID = generateUserID();  // or generate from a stable counter if you wish
+      userID = generateUserID();
       provider = false;
       chain = chain;
-      pods = [];
+      pods = List.nil();
       cxmputeBalance = 0;
-      stxres = [];
+      stxres = List.nil();
       totalStxrage = 0;
-      infxrenceConfig = {
-        priceRange = [];
-      };
+      infxrenceConfig = { priceRange = [0,0] };
     };
-    userDB.internalUsers := Array.append(userDB.internalUsers, [newUser]);
+    userDB := List.push(newUser, userDB);
   };
 
-  // Step 3: Check if user exists, else create it, then return that user.
   public func getOrCreateUser(walletAddress : Text, chain : Types.Chain) : async Types.User {
-    let maybeUser = findUser(walletAddress, chain);
-    switch maybeUser {
-      case (?found) { 
-        // Already in store; return that user
-        return found;
-      };
-      case null { 
-        // Not found; create & store a new user, return it
+    switch (findUser(walletAddress, chain)) {
+      case (?found) found;
+      case null {
         let newUser : Types.User = {
           walletAddress = walletAddress;
-          userID = "generatedUserId"; // you can do something unique or random
+          userID = generateUserID();
           provider = false;
           chain = chain;
-          pods = [];
+          pods = List.nil();
           cxmputeBalance = 0;
-          stxres = [];
+          stxres = List.nil();
           totalStxrage = 0;
-          infxrenceConfig = { priceRange = [] };
+          infxrenceConfig = { priceRange = [0,0] };
         };
-
-        // Add to stable array
-        userDB.internalUsers := Array.append(userDB.internalUsers, [newUser]);
-        return newUser;
-      };
+        userDB := List.push(newUser, userDB);
+        newUser;
+      }
     }
   };
 
-  // A query function to see all stored users (not required, but useful)
   public query func getAllUsers() : async [Types.User] {
-    return userDB.internalUsers;
+    List.toArray(userDB)
   };
 
   public func changeUserChain(walletAddress : Text, oldChain : Types.Chain, newChain : Types.Chain) : async ?Types.User {
-    // Find the user by walletAddress and the old chain.
     let maybeUser = findUser(walletAddress, oldChain);
     switch maybeUser {
       case (?user) {
-        // Create a new user record that is identical except for the new chain.
         let updatedUser : Types.User = {
           walletAddress = user.walletAddress;
           userID = user.userID;
@@ -101,33 +81,72 @@ actor UserManager {
           totalStxrage = user.totalStxrage;
           infxrenceConfig = user.infxrenceConfig;
         };
-
-        // Find the index of the found user in the stable array.
-        let indexOpt = Array.indexOf<Types.User>(
-          user,
-          userDB.internalUsers,
-          func (a : Types.User, b : Types.User) : Bool {
-            a.walletAddress == b.walletAddress and a.userID == b.userID and a.chain == b.chain
-          }
-        );
-        switch indexOpt {
-          case (?i) {
-            // Replace the user at index i by mapping over the array.
-            let newUsers = Array.mapEntries<Types.User, Types.User>(
-              userDB.internalUsers,
-              func (elem, j) : Types.User {
-                if (j == i) { updatedUser } else { elem }
-              }
-            );
-            userDB.internalUsers := newUsers;
-            return ?updatedUser;
-          };
-          case null { return null; }
-        }
+        userDB := List.map<Types.User, Types.User>(userDB, func (u) {
+          if (u.walletAddress == user.walletAddress and u.chain == user.chain) updatedUser else u
+        });
+        ?updatedUser;
       };
-      case null { return null; }
+      case null null;
     }
   };
 
 
+  // ██████╗░██╗░░░██╗░█████╗░██╗░░██╗███████╗████████╗░██████╗
+  // ██╔══██╗██║░░░██║██╔══██╗██║░██╔╝██╔════╝╚══██╔══╝██╔════╝
+  // ██████╦╝██║░░░██║██║░░╚═╝█████═╝░█████╗░░░░░██║░░░╚█████╗░
+  // ██╔══██╗██║░░░██║██║░░██╗██╔═██╗░██╔══╝░░░░░██║░░░░╚═══██╗
+  // ██████╦╝╚██████╔╝╚█████╔╝██║░╚██╗███████╗░░░██║░░░██████╔╝
+  // ╚═════╝░░╚═════╝░░╚════╝░╚═╝░░╚═╝╚══════╝░░░╚═╝░░░╚═════╝░
+  type Bucket = Buckets.Bucket;
+  var buckets = Buffer.Buffer<Bucket>(0);
+
+  public func storeFile(file : Types.File) : async (Types.File) {
+    var updatedChunks : [Types.FileChunk] = [];
+
+    for (chunk in file.chunks.vals()) {
+      let stored = await storeChunk(chunk);
+      if (not stored) {
+        Debug.print("Failed to store chunk " # Nat.toText(chunk.chunkID));
+      } else {
+        let bucketIndex = buckets.size() - 1;
+        updatedChunks := Array.append(updatedChunks, [{
+          chunk = chunk.chunk;
+          chunkID = chunk.chunkID;
+          bucketID = ?bucketIndex;
+        }: Types.FileChunk]);
+      }
+    };
+
+    return {
+      name = file.name;
+      chunks = updatedChunks;
+      totalSize = file.totalSize;
+      fileType = file.fileType;
+    };
+  };
+
+  private func storeChunk(chunk : Types.FileChunk) : async Bool {
+    for (i in Iter.range(0, buckets.size() - 1)) {
+      let bucket = buckets.get(i);
+      let freeSpace = await bucket.getFreeStorage();
+      if (freeSpace >= chunk.chunk.size()) {
+        return await bucket.put(chunk.chunkID, chunk.chunk);
+      };
+    };
+
+    let newBucket = await Buckets.Bucket();
+    buckets.add(newBucket);
+    return await newBucket.put(chunk.chunkID, chunk.chunk);
+  };
+
+  public func retrieveFileChunk(file : Types.File, chunkID : Nat) : async ?Blob {
+    for (i in Iter.range(0, buckets.size() - 1)) {
+      let bucket = buckets.get(i);
+      let chunk = await bucket.get(chunkID);
+      if (chunk != null) {
+        return chunk;
+      };
+    };
+    return null;
+  };
 }

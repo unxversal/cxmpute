@@ -76,12 +76,30 @@ export type PodType =
 Model
 
 
+export interface UploadedFile{
+  name: string;
+  chunks: UploadedFileChunk[];
+  totalSize: bigint;
+  fileType: string;
+}
+
+export interface UploadedFileChunk{
+  chunkID: string;
+  chunk: Blob;
+  bucketID?: number | null;
+}
 
 
+export interface FileChunk{
+  chunkID: number;
+  bucketID?: number;
+}
 
 export interface File{
-ID: string;
-bucketID: string[];
+  name: string;
+  chunks: FileChunk[];
+  totalSize: number;
+  fileType: string;
 }
 
 export interface Pod {
@@ -138,8 +156,8 @@ interface SSHConnectionInfo {
 
 
 export interface Stxred{
-file: File;
-size: number;
+  file: File;
+  size: number;
 }
 
 export interface InfxrenceConfig{

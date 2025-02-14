@@ -2,8 +2,11 @@ import styles from './podspage.module.css';
 import * as React from 'react';
 import { User } from '../../lib/types';
 import { useState } from 'react';
-import { PodType, Model, podString, Pod } from '../../lib/types';
+import { PodType, Model, podString, Pod, UploadedFile, UploadedFileChunk } from '../../lib/types';
 import { keyframes } from 'framer-motion';
+import { cxmpute_backend } from '../../../declarations/cxmpute_backend';
+import { v4 as uuidv4 } from 'uuid';
+import { FileChunk } from '../../../declarations/cxmpute_backend/cxmpute_backend.did';
 
 interface PodsPageParams{
     user?: User;
@@ -94,7 +97,7 @@ export default function PodsPage({ user }: PodsPageParams) {
     const [numGPUs, setNumGPUs] = useState(0);
     const [selectedPod, setSelectedPod] = useState<Pod | null>(null);
 
-    const handleSubmit = (e: React.FormEvent) => {
+    const handleSubmit = async (e: React.FormEvent) => {
         e.preventDefault();
         const formData = new FormData(e.target as HTMLFormElement);
         console.log('Form data:', formData);
@@ -154,8 +157,41 @@ export default function PodsPage({ user }: PodsPageParams) {
                     deployTimer: Number(formValues.deployTimer),
                 }
                 break;
-            case 'serverlessPY':
+            case 'serverlessPY':{
                 // upload file to backend, returns File object, then construct pod with File object
+
+
+                const chunkSize = 1024 * 1024; // 1MB chunk size
+                const chunks = [];
+                const file = formValues.file;
+
+                for (let start = 0; start < file.size; start += chunkSize) {
+                    const blobSlice = file.slice(start, start + chunkSize);
+                    const arrayBuffer = await blobSlice.arrayBuffer();
+                    const uint8Array = new Uint8Array(arrayBuffer); // Now a Uint8Array
+                    chunks.push({
+                        chunkID: uuidv4().replace(/-/g, ''),
+                        chunk: Array.from(uint8Array),
+                        bucketID: [],
+                    } as FileChunk);
+                }
+
+                // generate uploadedfile 
+
+                
+
+                const fileSize: bigint = BigInt(formValues.file.size);
+
+                const formattedFile = {
+                    name: formValues.file.name,
+                    chunks: chunks,
+                    totalSize: fileSize,
+                    fileType: formValues.file.type,
+                }
+
+                const uploadedFile = await cxmpute_backend.storeFile(formattedFile);
+
+                console.log('Uploaded File:', uploadedFile);
 
                 (constructedPod as Pod) = {
                     name: formValues.pxdName,
@@ -163,9 +199,35 @@ export default function PodsPage({ user }: PodsPageParams) {
                     type: podType,
                     status: 'undeployed',
                 }
-                break;
-            case 'serverlessJS':
+                break;}
+            case 'serverlessJS':{
                 // upload file to backend, returns File object, then construct pod with File object
+
+
+                const chunkSize = 1024 * 1024; // 1MB chunk size
+                const chunks: UploadedFileChunk[] = [];
+                const file = formValues.file;
+
+                for (let start = 0; start < file.size; start += chunkSize) {
+                    const chunk = file.slice(start, start + chunkSize);
+                    chunks.push({
+                        chunkID: uuidv4().replace(/-/g, ''),
+                        chunk: chunk,
+                    });
+                }
+
+                // generate uploadedfile 
+
+                const formattedFile: UploadedFile = {
+                    name: formValues.file.name,
+                    chunks: chunks,
+                    totalSize: formValues.file.size,
+                    fileType: formValues.file.type
+                }
+
+                const uploadedFile = await cxmpute_backend.storeFile(formattedFile);
+
+                console.log('Uploaded File:', uploadedFile);
 
                 (constructedPod as Pod) = {
                     name: formValues.pxdName,
@@ -173,9 +235,35 @@ export default function PodsPage({ user }: PodsPageParams) {
                     type: podType,
                     status: 'undeployed',
                 }
-                break;
-            case 'serverlessTS':
+                break;}
+            case 'serverlessTS':{
                 // upload file to backend, returns File object, then construct pod with File object
+
+
+                const chunkSize = 1024 * 1024; // 1MB chunk size
+                const chunks: UploadedFileChunk[] = [];
+                const file = formValues.file;
+
+                for (let start = 0; start < file.size; start += chunkSize) {
+                    const chunk = file.slice(start, start + chunkSize);
+                    chunks.push({
+                        chunkID: uuidv4().replace(/-/g, ''),
+                        chunk: chunk,
+                    });
+                }
+
+                // generate uploadedfile 
+
+                const formattedFile: UploadedFile = {
+                    name: formValues.file.name,
+                    chunks: chunks,
+                    totalSize: formValues.file.size,
+                    fileType: formValues.file.type
+                }
+
+                const uploadedFile = await cxmpute_backend.storeFile(formattedFile);
+
+                console.log('Uploaded File:', uploadedFile);
 
                 (constructedPod as Pod) = {
                     name: formValues.pxdName,
@@ -183,7 +271,7 @@ export default function PodsPage({ user }: PodsPageParams) {
                     type: podType,
                     status: 'undeployed',
                 }
-                break;
+                break;}
             case 'vxctor':
                 (constructedPod as Pod) = {
                     name: formValues.pxdName,

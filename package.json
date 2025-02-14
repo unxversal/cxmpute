@@ -24,7 +24,8 @@
     "lamina": "^1.0.1",
     "react-markdown": "^9.0.3",
     "react-spring": "^9.7.5",
-    "three": "^0.137.5"
+    "three": "^0.137.5",
+    "uuid": "^11.0.5"
   },
   "devDependencies": {
     "@ethersproject/providers": "^5.7.2",

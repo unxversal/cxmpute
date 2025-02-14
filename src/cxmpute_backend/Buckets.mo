@@ -3,19 +3,19 @@ import Map "mo:base/OrderedMap";
 import Bool "mo:base/Bool";
 import Array "mo:base/Array";
 import Blob "mo:base/Blob";
-import HashMap "mo:base/HashMap";
-import Iter "mo:base/Iter";
-import Principal "mo:base/Principal";
+// import HashMap "mo:base/HashMap";
+// import Iter "mo:base/Iter";
+// import Principal "mo:base/Principal";
 import Text "mo:base/Text";
-import Option "mo:base/Option";
-import Types "Types";
+// import Option "mo:base/Option";
+// import Types "Types";
 
-persistent actor class Bucket() {
+actor class Bucket() {
   
-  type Key = Nat;
+  type Key = Text;
   type Value = Blob;
 
-  transient let keyMap = Map.Make<Key>(Nat.compare);
+  let keyMap = Map.Make<Key>(Text.compare);
 
   let MAX_STORAGE : Nat = 429_496_729_600; // 400GiB
 
@@ -38,8 +38,13 @@ persistent actor class Bucket() {
   };
 
   public func remove(k : Key) : async () {
+    switch (keyMap.get(map, k)) {
+      case (?chunk) {
+        totalStorage := totalStorage - Array.size(Blob.toArray(chunk));
+      };
+      case null {};
+    };
     map := keyMap.delete(map, k);
-    totalStorage := totalStorage - k;
   };
 
   public func getTotalStorage() : async Nat {

@@ -97,8 +97,8 @@ module Types {
   // };
 
   public type FileChunk = {
-    chunk : Blob;
-    chunkID : Nat;
+    chunk : ?Blob;
+    chunkID : Text;
     bucketID : ?Nat;
   };
 

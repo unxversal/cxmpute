@@ -4,11 +4,12 @@ import Types "Types";
 import Text "mo:base/Text";
 import Debug "mo:base/Debug";
 import Blob "mo:base/Blob";
-import Error "mo:base/Error";
+// import Error "mo:base/Error";
 import Buckets "Buckets";
 import Buffer "mo:base/Buffer";
 import Iter "mo:base/Iter";
 import List "mo:base/List";
+import Cycles "mo:base/ExperimentalCycles";
 
 actor UserManager {
 
@@ -106,11 +107,11 @@ actor UserManager {
     for (chunk in file.chunks.vals()) {
       let stored = await storeChunk(chunk);
       if (not stored) {
-        Debug.print("Failed to store chunk " # Nat.toText(chunk.chunkID));
+        Debug.print("Failed to store chunk " # chunk.chunkID);
       } else {
         let bucketIndex = buckets.size() - 1;
         updatedChunks := Array.append(updatedChunks, [{
-          chunk = chunk.chunk;
+          chunk = null;
           chunkID = chunk.chunkID;
           bucketID = ?bucketIndex;
         }: Types.FileChunk]);
@@ -126,20 +127,30 @@ actor UserManager {
   };
 
   private func storeChunk(chunk : Types.FileChunk) : async Bool {
-    for (i in Iter.range(0, buckets.size() - 1)) {
-      let bucket = buckets.get(i);
-      let freeSpace = await bucket.getFreeStorage();
-      if (freeSpace >= chunk.chunk.size()) {
-        return await bucket.put(chunk.chunkID, chunk.chunk);
-      };
-    };
+    switch (chunk.chunk) {
+        case (?blob) {
+            for (i in Iter.range(0, buckets.size() - 1)) {
+                let bucket = buckets.get(i);
+                let freeSpace = await bucket.getFreeStorage();
+                if (freeSpace >= blob.size()) {
+                    return await bucket.put(chunk.chunkID, blob);
+                };
+            };
 
-    let newBucket = await Buckets.Bucket();
-    buckets.add(newBucket);
-    return await newBucket.put(chunk.chunkID, chunk.chunk);
+            Cycles.add<system>(10_000_000); // Add cycles for the bucket creation
+            let newBucket = await Buckets.Bucket();
+            buckets.add(newBucket);
+            return await newBucket.put(chunk.chunkID, blob);
+        };
+        case null {
+            Debug.print("Chunk is null, cannot store.");
+            return false;
+        }
+    }
   };
 
-  public func retrieveFileChunk(file : Types.File, chunkID : Nat) : async ?Blob {
+
+  public func retrieveFileChunk(file : Types.File, chunkID : Text) : async ?Blob {
     for (i in Iter.range(0, buckets.size() - 1)) {
       let bucket = buckets.get(i);
       let chunk = await bucket.get(chunkID);

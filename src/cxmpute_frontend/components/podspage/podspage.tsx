@@ -163,15 +163,15 @@ export default function PodsPage({ user }: PodsPageParams) {
 
                 const chunkSize = 1024 * 1024; // 1MB chunk size
                 const chunks = [];
-                const file = formValues.file;
+                const file = formValues.files;
 
-                for (let start = 0; start < file.size; start += chunkSize) {
+                for (let start = 0; start < formValues.files.size; start += chunkSize) {
                     const blobSlice = file.slice(start, start + chunkSize);
                     const arrayBuffer = await blobSlice.arrayBuffer();
                     const uint8Array = new Uint8Array(arrayBuffer); // Now a Uint8Array
                     chunks.push({
                         chunkID: uuidv4().replace(/-/g, ''),
-                        chunk: Array.from(uint8Array),
+                        chunk: [Array.from(uint8Array)],
                         bucketID: [],
                     } as FileChunk);
                 }
@@ -180,18 +180,24 @@ export default function PodsPage({ user }: PodsPageParams) {
 
                 
 
-                const fileSize: bigint = BigInt(formValues.file.size);
+                const fileSize: bigint = BigInt(formValues.files.size);
 
                 const formattedFile = {
-                    name: formValues.file.name,
+                    name: formValues.files.name,
                     chunks: chunks,
                     totalSize: fileSize,
-                    fileType: formValues.file.type,
+                    fileType: formValues.files.type,
                 }
+
+                console.log('Formatted File:', formattedFile);
 
                 const uploadedFile = await cxmpute_backend.storeFile(formattedFile);
 
                 console.log('Uploaded File:', uploadedFile);
+
+                // check type of uploaded file
+
+                // store file in Pod
 
                 (constructedPod as Pod) = {
                     name: formValues.pxdName,

@@ -137,7 +137,7 @@ actor UserManager {
                 };
             };
 
-            Cycles.add<system>(10_000_000); // Add cycles for the bucket creation
+            Cycles.add<system>(38_461_538_461); // Add cycles for the bucket creation
             let newBucket = await Buckets.Bucket();
             buckets.add(newBucket);
             return await newBucket.put(chunk.chunkID, blob);

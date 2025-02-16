@@ -76,10 +76,12 @@
 .oneDash{
     width: 100vw;
     height: 100%;
-    background-color: white;
+    background-color: #101010;
+    /* background-color: #ffffff; */
     display: flex;
     flex-direction: column;
     justify-content: space-between;
+    overflow-y: scroll;
 }
 
 .dashFooter,
@@ -127,7 +129,7 @@
     display: grid;
     grid-template-columns: repeat(4, 1fr);
     grid-template-rows: repeat(3, 1fr);
-    gap: 10px;
+    gap: 20px;
     flex-grow: 1;
     height: 100%;
   }
@@ -135,9 +137,33 @@
   .item1 {
     grid-row: 1 / 4;
     grid-column: 1 / 2;
-    background-color: lightblue;
+    /* background-color: lightblue; */
+    display: relative;
+    overflow: hidden;
+  }
+
+  .spiralOverlay{
+    position: absolute; 
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .spiralOverlay h1{
+    font-weight: 400;
+    font-family: Potra;
+    margin: 0;
+    font-size: 48px;
+  }
+
+  .spiralOverlay p{
+    text-align: center;
+    font-size: 18px;
   }
   
+
+
   .item2 {
     grid-row: 1 / 2;
     grid-column: 2 / 4;
@@ -153,13 +179,40 @@
   .item4 {
     grid-row: 2 / 4;
     grid-column: 2 / 3;
-    background-color: lightgoldenrodyellow;
+    background-color: #202020;
+    display: flex;
+    padding: 20px;
+    flex-wrap: wrap;
+  }
+
+  .featureButton{
+    flex: 1 1 50%;
+    display: flex;
+    justify-content: flex-start;
+    transition: all 0.3s ease-in-out;
+  }
+
+  .featureButton:hover{
+    color: wheat;
+    cursor: pointer;
+  }
+
+  .featureButton img{
+    margin: 0;
+    padding: 0;
   }
   
+  .featureButton p{
+    font-size: 20px;
+    margin: 0;
+  }
+
   .item5 {
     grid-row: 2 / 4;
     grid-column: 3 / 5;
-    background-color: lightpink;
+    overflow-y: hidden;
+    display: flex;
+    background-color: #202020;
   }
   
   .dashContent > div {
@@ -168,7 +221,7 @@
     justify-content: center;
     font-size: 1.5em;
     color: white;
-    border: 1px solid #333;
+    /* border: 1px solid #333; */
     border-radius: 10px;
     box-shadow: 2px 2px 6px rgba(0, 0, 0, 0.3);
   }

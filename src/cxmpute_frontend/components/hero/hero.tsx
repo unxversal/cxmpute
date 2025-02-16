@@ -1,3 +1,4 @@
+import Spiral from '../3dspiral/3dspiral';
 import { Cobe } from '../cobe/cobe';
 import DecryptedText from '../decryptedText/decryptedText';
 import styles from './hero.module.css';
@@ -125,6 +126,82 @@ export default function Hero({ toggleDashboard }: HeroProps) {
         return {location: [marker.lat, marker.long], size: 0.02}
     })
 
+    interface Feature{
+        name: string;
+        image: string;
+    }
+
+    const featureList: Feature[] = [
+        {
+            name: 'Virtual Mxchines',
+            image: '/cube-scan.svg'
+        },
+        {
+            name: 'Sxrverless',
+            image: '/cloud-square.svg'
+        },
+        {
+            name: 'AI Agxnts',
+            image: '/brain-electricity.svg'
+        },
+        {
+            name: 'Wxrkflows',
+            image: '/codexecution.svg'
+        },
+        {
+            name: 'Kxbernetes',
+            image: '/server.svg' //network-reverse
+        },
+        {
+            name: 'AI Infxrence',
+            image: '/brain-electricity.svg'
+        },
+        {
+            name: 'AI Fxnetuning',
+            image: '/brain-research.svg'
+        },
+        {
+            name: 'AI Trxining',
+            image: '/brain.svg'
+        },
+        {
+            name: 'Stxrage',
+            image: '/database.svg'
+        },
+        {
+            name: 'Vxctor Database',
+            image: '/internet-dive.svg'
+        },
+        {
+            name: 'AI Chxt',
+            image: '/telegram.svg'
+        },
+        {
+            name: 'Dxtabases',
+            image: '/database-solid.svg'
+        },
+        {
+            name: 'Dxtasets',
+            image: '/database-export.svg'
+        },
+        {
+            name: 'Code Spaces',
+            image: '/computer.svg'
+        },
+        {
+            name: 'PyNotebooks',
+            image: '/code.svg'
+        },
+        // {
+        //     name: 'Virtual Machines',
+        //     image: '/server.svg'
+        // },
+        {
+            name: 'Rxndering',
+            image: '/select-face3d.svg'
+        },
+    ]
+
     
     return (
         <div className={styles.hero}>
@@ -201,11 +278,37 @@ export default function Hero({ toggleDashboard }: HeroProps) {
                     
                 </div>
                 <div className={styles.dashContent}>
-                    <div className={styles.item1}>1</div>
+                    <div className={styles.item1}>
+                        <Spiral />
+                        <div className={styles.spiralOverlay}>
+                            <h1>CXMPUTE</h1>
+                            {/* <p>The World Datacenter</p> */}
+                        </div>
+                    </div>
                     <div className={styles.item2}>2 & 3</div>
                     <div className={styles.item3}>4</div>
-                    <div className={styles.item4}>6 & 10</div>
-                    <div className={styles.item5}>7 8 11 12</div>
+                    <div className={styles.item4}>
+                        {featureList.map((feature, index)=>(
+                            <div className={styles.featureButton}>
+                                <img
+                                    src={feature.image}
+                                    alt="Model Icon"
+                                    style={{
+                                    width: '20px',
+                                    height: '20px',
+                                    marginRight: '8px',
+                                    marginLeft: 0,
+                                    marginBottom: 0,
+                                    filter: 'brightness(0) invert(1)',
+                                    }}
+                                />
+                                <p>{feature.name}</p>
+                            </div>
+                        ))}
+                    </div>
+                    <div className={styles.item5}>
+                        <Cobe markerlist={markerlist} />
+                    </div>
                 </div>
                 <div className={styles.dashFooter}>
                     <div className={styles.bottombutton}>

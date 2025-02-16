@@ -227,6 +227,7 @@
     font-size: 2em;
     width: 100%;
     text-align: end;
+    cursor: pointer;
   }
   
   .item4 {
@@ -317,3 +318,8 @@
   }
   
   
+  .leftAligned{
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+  }

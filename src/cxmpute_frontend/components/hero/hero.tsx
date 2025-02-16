@@ -303,8 +303,10 @@ export default function Hero({ toggleDashboard }: HeroProps) {
                     </div>
                     <div className={styles.item2}>
                         <p><strong>Cxmpute is a decentralized compute network that allows anyone with an eligible computer to monetize idle computing power.</strong></p>
-                        <p>By distributing resources globally, we provide cost-effective, flexible, and scalable solutions for both compute providers and users.</p>
-                        <p>Whether you need virtual machines, serverless compute, or decentralized AI services, Cxmpute ensures efficiency and accessibility for all, creating the <span className={styles.goldenText}>world’s largest datacenter</span> without the need for massive upfront investments. </p>
+                        <div className={styles.leftAligned}>
+                            <p>By distributing resources globally, we provide cost-effective, flexible, and scalable solutions for both compute providers and users.</p>
+                            <p>Whether you need virtual machines, serverless compute, or decentralized AI services, Cxmpute ensures efficiency and accessibility for all, creating the <span className={styles.goldenText}>world’s largest datacenter</span> without the need for massive upfront investments. </p>
+                        </div>
                         <p>Join us in building the future of decentralized computing.</p>
                         <ul className={styles.socials}>
                             <li onClick={() => window.open('https://github.com/unxversal', '_blank')}>
@@ -358,7 +360,7 @@ export default function Hero({ toggleDashboard }: HeroProps) {
                     <div className={styles.item3}>
                         <h1>Start Earning</h1>
                         <p>Learn more about how you can become a Cxmpute Provider and put your hardware to work for you.</p>
-                        <button>》》</button>
+                        <button onClick={() => window.open('https://drive.google.com/file/d/1rax3ujJv0Bw7Z30V3s9pDPC1Q0dhCoeG/view?usp=sharing', '_blank')}>》》</button>
                     </div>
                     <div className={styles.item4}>
                         {featureList.map((feature, index)=>(
@@ -384,6 +386,18 @@ export default function Hero({ toggleDashboard }: HeroProps) {
                     <div className={styles.item5}>
                         {selectedFeature == '' ? <Cobe markerlist={markerlist} /> : (
                             <>
+                                <img
+                                    src={featureList.find((feature) => feature.name == selectedFeature)?.image}
+                                    alt="Model Icon"
+                                    style={{
+                                    width: '100px',
+                                    height: '100px',
+                                    marginRight: '8px',
+                                    marginLeft: 0,
+                                    marginBottom: 0,
+                                    filter: 'brightness(0) invert(1)',
+                                    }}
+                                />
                                 <h1>{selectedFeature}</h1>
                                 <p>{featureList.find((feature) => feature.name == selectedFeature)?.description}</p>
                             </>

@@ -3,6 +3,7 @@ import { Cobe } from '../cobe/cobe';
 import DecryptedText from '../decryptedText/decryptedText';
 import styles from './hero.module.css';
 import * as React from 'react';
+import { useState } from 'react';
 
 type HeroProps = {
     toggleDashboard: () => void;
@@ -129,78 +130,93 @@ export default function Hero({ toggleDashboard }: HeroProps) {
     interface Feature{
         name: string;
         image: string;
+        description: string;
     }
 
     const featureList: Feature[] = [
         {
-            name: 'Virtual Mxchines',
-            image: '/cube-scan.svg'
+            name: 'Virtual Machines',
+            image: '/cube-scan.svg',
+            description: 'Virtual Machines (VMs) offer a customizable, scalable compute environment to run a variety of workloads. With Cxmpute, providers offer VMs optimized for specific hardware configurations, enabling efficient and cost-effective computing across a decentralized network.'
         },
         {
-            name: 'Sxrverless',
-            image: '/cloud-square.svg'
+            name: 'Serverless',
+            image: '/cloud-square.svg',
+            description: 'Cxmpute’s Serverless service provides event-driven compute without the need to manage traditional servers. This highly scalable solution allows users to deploy applications with minimal overhead, leveraging the power of a decentralized network.'
         },
         {
-            name: 'AI Agxnts',
-            image: '/brain-electricity.svg'
+            name: 'AI Agents',
+            image: '/brain-electricity.svg',
+            description: 'AI Agents are modular, intelligent agents that can perform a wide range of tasks, from simple automation to complex workflows. With Cxmpute’s Agxnt service, users can integrate AI agents seamlessly into their applications, enhancing productivity and creativity.'
         },
         {
-            name: 'Wxrkflows',
-            image: '/codexecution.svg'
+            name: 'Workflows',
+            image: '/codexecution.svg',
+            description: 'Workflows allow users to automate and manage tasks by combining various compute services. With Cxmpute’s decentralized infrastructure, workflows can span multiple providers and services, ensuring flexibility, reliability, and scalability.'
         },
         {
-            name: 'Kxbernetes',
-            image: '/server.svg' //network-reverse
+            name: 'Kubernetes',
+            image: '/server.svg',
+            description: 'Kubernetes enables large-scale container orchestration for distributed applications. Cxmpute supports Kubernetes to facilitate decentralized AI training, serverless deployments, and scalable applications, enhancing both reliability and flexibility for users.'
         },
         {
-            name: 'AI Infxrence',
-            image: '/brain-electricity.svg'
+            name: 'AI Inference',
+            image: '/brain-electricity.svg',
+            description: 'Cxmpute’s AI Inference service provides serverless AI model execution, enabling rapid and cost-efficient inference without the need to manage infrastructure. This makes deploying AI models on decentralized resources both affordable and scalable.'
         },
         {
-            name: 'AI Fxnetuning',
-            image: '/brain-research.svg'
+            name: 'AI Fine-tuning',
+            image: '/brain-research.svg',
+            description: 'AI Fine-tuning allows users to customize pre-trained models on their specific datasets. With Cxmpute, this process is decentralized and scalable, empowering users to enhance model accuracy at a lower cost and without the need for centralized data centers.'
         },
         {
-            name: 'AI Trxining',
-            image: '/brain.svg'
+            name: 'AI Training',
+            image: '/brain.svg',
+            description: 'Cxmpute provides decentralized infrastructure for large-scale machine learning model training. By utilizing the network’s distributed compute power, users can access a flexible, cost-efficient solution for AI training workloads.'
         },
         {
-            name: 'Stxrage',
-            image: '/database.svg'
+            name: 'Storage',
+            image: '/database.svg',
+            description: 'Stxrage is Cxmpute’s decentralized storage service, providing secure and censorship-resistant file storage. It ensures data integrity and accessibility while avoiding centralized points of failure.'
         },
         {
-            name: 'Vxctor Database',
-            image: '/internet-dive.svg'
+            name: 'Vector Database',
+            image: '/internet-dive.svg',
+            description: 'Cxmpute’s Vector Database service enables efficient search and retrieval of high-dimensional data, such as AI model embeddings. This service supports the decentralization of complex data storage, making AI-driven applications faster and more reliable.'
         },
         {
-            name: 'AI Chxt',
-            image: '/telegram.svg'
+            name: 'AI Chat',
+            image: '/telegram.svg',
+            description: 'AI Chat integrates AI-driven conversational agents for seamless, automated communication. Through the Cxmpute network, users can engage in real-time, interactive chat experiences with a variety of pre-built or custom AI agents.'
         },
         {
-            name: 'Dxtabases',
-            image: '/database-solid.svg'
+            name: 'Databases',
+            image: '/database-solid.svg',
+            description: 'Cxmpute’s database services allow users to store and query structured data in a decentralized, secure environment. Leveraging Stxrage ensures that all data operations are resilient to failure and censorship.'
         },
         {
-            name: 'Dxtasets',
-            image: '/database-export.svg'
+            name: 'Datasets',
+            image: '/database-export.svg',
+            description: 'Cxmpute offers a decentralized platform for sharing and storing datasets. Users can access, contribute, and collaborate on datasets in a transparent, open, and secure environment, enabling research and innovation.'
         },
         {
             name: 'Code Spaces',
-            image: '/computer.svg'
+            image: '/computer.svg',
+            description: 'Code Spaces provides a cloud-based development environment for coding, testing, and deploying applications. It leverages decentralized resources to ensure efficient and flexible access to the compute power needed for development.'
         },
         {
             name: 'PyNotebooks',
-            image: '/code.svg'
+            image: '/code.svg',
+            description: 'PyNotebooks allow users to run Python-based data science and machine learning workflows in an interactive environment. Powered by Cxmpute’s decentralized compute network, these notebooks offer flexible, cost-effective solutions for data-driven applications.'
         },
-        // {
-        //     name: 'Virtual Machines',
-        //     image: '/server.svg'
-        // },
         {
-            name: 'Rxndering',
-            image: '/select-face3d.svg'
+            name: 'Rendering',
+            image: '/select-face3d.svg',
+            description: 'Cxmpute’s Rendering service provides decentralized 3D rendering capabilities, perfect for digital content creation, simulations, and virtual worlds. This service uses distributed compute resources to speed up rendering tasks while reducing costs.'
         },
     ]
+    
+    const [selectedFeature, setSelectedFeature] = useState('')
 
     
     return (
@@ -285,11 +301,70 @@ export default function Hero({ toggleDashboard }: HeroProps) {
                             {/* <p>The World Datacenter</p> */}
                         </div>
                     </div>
-                    <div className={styles.item2}>2 & 3</div>
-                    <div className={styles.item3}>4</div>
+                    <div className={styles.item2}>
+                        <p><strong>Cxmpute is a decentralized compute network that allows anyone with an eligible computer to monetize idle computing power.</strong></p>
+                        <p>By distributing resources globally, we provide cost-effective, flexible, and scalable solutions for both compute providers and users.</p>
+                        <p>Whether you need virtual machines, serverless compute, or decentralized AI services, Cxmpute ensures efficiency and accessibility for all, creating the <span className={styles.goldenText}>world’s largest datacenter</span> without the need for massive upfront investments. </p>
+                        <p>Join us in building the future of decentralized computing.</p>
+                        <ul className={styles.socials}>
+                            <li onClick={() => window.open('https://github.com/unxversal', '_blank')}>
+                                <img
+                                src="/github-circle.svg"
+                                alt="Github icon"
+                                style={{
+                                    width: '20px',
+                                    height: '20px',
+                                    marginRight: '8px',
+                                    marginLeft: 0,
+                                    filter: 'brightness(0) invert(1)',
+                                    cursor: 'pointer',
+                                }}
+                                />
+                            </li>
+                            <li
+                                onClick={() => window.open('https://discord.gg/vE3xvFsZA8', '_blank')}
+                            >
+                                <img
+                                src="/discord.svg"
+                                alt="Discord icon"
+                                style={{
+                                    width: '20px',
+                                    height: '20px',
+                                    marginRight: '8px',
+                                    marginLeft: 0,
+                                    filter: 'brightness(0) invert(1)',
+                                    cursor: 'pointer',
+                                }}
+                                />
+                            </li>
+                            <li
+                                onClick={() => window.open('https://x.com/cxmpute', '_blank')}
+                            >
+                                <img
+                                src="/x.svg"
+                                alt="X icon"
+                                style={{
+                                    width: '20px',
+                                    height: '20px',
+                                    marginRight: '8px',
+                                    marginLeft: 0,
+                                    filter: 'brightness(0) invert(1)',
+                                    cursor: 'pointer',
+                                }}
+                                />
+                            </li>
+                        </ul>
+                    </div>
+                    <div className={styles.item3}>
+                        <h1>Start Earning</h1>
+                        <p>Learn more about how you can become a Cxmpute Provider and put your hardware to work for you.</p>
+                        <button>》》</button>
+                    </div>
                     <div className={styles.item4}>
                         {featureList.map((feature, index)=>(
-                            <div className={styles.featureButton}>
+                            <div 
+                                onClick={() => setSelectedFeature(feature.name)}
+                                className={styles.featureButton}>
                                 <img
                                     src={feature.image}
                                     alt="Model Icon"
@@ -307,12 +382,24 @@ export default function Hero({ toggleDashboard }: HeroProps) {
                         ))}
                     </div>
                     <div className={styles.item5}>
-                        <Cobe markerlist={markerlist} />
+                        {selectedFeature == '' ? <Cobe markerlist={markerlist} /> : (
+                            <>
+                                <h1>{selectedFeature}</h1>
+                                <p>{featureList.find((feature) => feature.name == selectedFeature)?.description}</p>
+                            </>
+                        )}
                     </div>
                 </div>
                 <div className={styles.dashFooter}>
                     <div className={styles.bottombutton}>
                         Github ✦
+                    </div>
+                    <div className={styles.bottomButton} onClick={toggleDashboard}>
+                        <DecryptedText 
+                            text="OPEN CXMPUTE ✦" 
+                            className="heroButton"
+                            encryptedClassName="heroButton"
+                        />
                     </div>
                 </div>
             </div>

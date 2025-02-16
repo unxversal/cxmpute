@@ -188,3 +188,13 @@ button[type="submit"] {
       font-size: 10px;
   }
 }
+
+.heroButton{
+  cursor: pointer;
+  transition: all 0.3s ease-in-out;
+  color: wheat;
+}
+
+.heroButton:hover{
+  color: wheat;
+}

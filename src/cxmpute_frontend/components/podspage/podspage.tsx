@@ -780,6 +780,7 @@ export default function PodsPage({ user }: PodsPageParams) {
                                     marginRight: '8px',
                                     marginLeft: 0,
                                     marginBottom: 0,
+                                    color: 'wheat',
                                     filter: 'brightness(0) invert(1)',
                                 }}
                             />

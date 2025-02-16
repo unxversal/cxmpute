@@ -66,6 +66,13 @@ function App() {
         </div> */}
 
       <div id="overlay"><Overlay /></div>
+      {/* <div id="overlaybox">
+        <div className="homebox">
+          <div id="homeboxHeader">Header</div>
+          <div id="homeboxContent">Content</div>
+          <div id="homeboxFooter">Footer</div>
+        </div>
+      </div> */}
 
       </div>
 

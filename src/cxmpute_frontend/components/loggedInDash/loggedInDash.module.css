@@ -71,7 +71,7 @@
 }
 
 .headerButtons button:hover{
-    background-color: white;
+    background-color: wheat;
     color: black;
 }
 
@@ -93,7 +93,7 @@
 .titletainer p{
     font-size: 1vw;
     padding-left: 10px;
-    color: #848484;
+    color: wheat;
 }
 
 .titletainer h1{

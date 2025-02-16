@@ -26,7 +26,7 @@
 }
 
 .createPod:hover{
-    background-color: white;
+    background-color: wheat;
     color: black;
 }
 
@@ -49,6 +49,7 @@
     flex-direction: column;
     justify-content: space-between;
     position: relative;
+    
 }
 
 .podFooter{
@@ -57,10 +58,16 @@
     justify-content: space-between;
 }
 
+.podType{
+    color: wheat;
+}
+
+
 .podFooter div{
     padding: 10px;
     border-right: 1px solid #848484;
     border-top: 1px solid #848484;
+    background-color: #202020;
     flex: 1 1 auto;
 }
 
@@ -85,7 +92,7 @@
 
 .togglePodDeployment{
     cursor: pointer;
-    max-width: 50%;
+    max-width: 30%;
     text-align: right;
     border-left: 1px solid #848484;
     padding: 10px;
@@ -205,4 +212,19 @@
 
 .formLeft h1{
     color: wheat;
+}
+
+.submitButton{
+    outline: none;
+    border: 1px solid #848484;
+    color: wheat;
+    background-color: #101010;
+    padding: 10px;
+    cursor: pointer;
+    transition: all 0.2s ease-in-out;
+}
+
+.submitButton:hover{
+    background-color: wheat;
+    color: #202020;
 }

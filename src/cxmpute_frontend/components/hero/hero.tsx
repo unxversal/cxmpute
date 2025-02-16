@@ -128,7 +128,7 @@ export default function Hero({ toggleDashboard }: HeroProps) {
     
     return (
         <div className={styles.hero}>
-            <div className={styles.left}>
+            {/* <div className={styles.left}>
                 <DecryptedText
                     text="CXMPUTE"
                     revealDirection="center"
@@ -165,6 +165,53 @@ export default function Hero({ toggleDashboard }: HeroProps) {
             </div>
             <div className={styles.right}>
                 <Cobe markerlist={markerlist} />
+            </div> */}
+
+            <div className={styles.oneDash}>
+                <div className={styles.dashHeader}>
+                    <div className={styles.leftNav}>
+                    ✦ CXMPUTE 
+                    </div>
+                    <div className={styles.rightNav}>
+                        <div className={styles.navElement}>
+                            Whitepaper ✦ 
+                        </div>
+                        <div className={styles.navElement}>
+                            Why Cxmpute? ✦
+                        </div>
+                        <div className={styles.navElement}>
+                            Docs ✦ 
+                        </div>
+                        <div className={styles.navElement}>
+                             Pricing ✦ 
+                        </div>
+                        <div className={styles.navElement}>
+                             Solutions ✦ 
+                        </div>
+                        <div className={styles.navElement}>
+                             Products ✦ 
+                        </div>
+                        <div className={styles.navElement}>
+                             Map ✦ 
+                        </div>
+                        <div className={styles.navElement}>
+                             Next Steps ✦ 
+                        </div> 
+                    </div>
+                    
+                </div>
+                <div className={styles.dashContent}>
+                    <div className={styles.item1}>1</div>
+                    <div className={styles.item2}>2 & 3</div>
+                    <div className={styles.item3}>4</div>
+                    <div className={styles.item4}>6 & 10</div>
+                    <div className={styles.item5}>7 8 11 12</div>
+                </div>
+                <div className={styles.dashFooter}>
+                    <div className={styles.bottombutton}>
+                        Github ✦
+                    </div>
+                </div>
             </div>
             
         </div>

@@ -834,7 +834,7 @@ export default function PodsPage({ user }: PodsPageParams) {
                                         )}
                                 </select>
                                 {renderAdditionalFormElements()}
-                                <button type="submit" className={styles.submitButton}>Submit</button>
+                                <button  className={styles.submitButton} disabled={true}>Submit</button>
                             </form>
                         </div>
                     </div>

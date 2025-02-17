@@ -110,7 +110,7 @@
     cursor: pointer;
 }
 
-.bottombutton:hover,
+.bottomButton:hover,
 .navElement:hover{
     /* background-color: wheat;
     color: black; */
@@ -139,7 +139,7 @@
     grid-row: 1 / 4;
     grid-column: 1 / 2;
     /* background-color: lightblue; */
-    display: relative;
+    position: relative;
     overflow: hidden;
   }
 
@@ -323,3 +323,89 @@
     flex-direction: column;
     gap: 10px;
   }
+
+  .bottomButton{
+    font-size: 20px !important;
+    transition: all 0.2s ease-in-out;
+
+  }
+
+  @media screen and (max-width: 768px) {
+
+    /* Make the header and footer stack vertically */
+    .dashHeader,
+    .dashFooter {
+      display: none;
+    }
+  
+    .rightNav {
+      flex-wrap: wrap;
+      justify-content: center;
+    }
+
+    .oneDash{
+      display: block;
+      overflow-x: hidden;
+    }
+  
+    /* Re-stack the main content items */
+    .dashContent {
+      display: flex;
+      flex-direction: column;
+      margin: 10px;
+      height: auto;
+      gap: 20px;
+    }
+    
+    .dashContent > div {
+      width: 100%;
+      height: auto;
+      margin-bottom: 20px;
+    }
+    
+    /* Let each item naturally occupy full width in vertical flow */
+    .item2,
+    .item3,
+    .item4,
+    .item5 {
+      grid-column: auto !important;
+      grid-row: auto !important;
+      order: unset; /* or set a custom stacking order if desired */
+      width: auto !important;
+      margin: 10px !important;
+      text-align: left;
+    }
+
+    .item1{
+      grid-column: auto !important;
+      grid-row: auto !important;
+      order: unset; /* or set a custom stacking order if desired */
+      margin: 10px !important;
+      width: auto !important;
+      text-align: left;
+    }
+  
+    /* Adjust font sizes or spacing if needed */
+    .item2 p,
+    .item3 p,
+    .item5 p {
+      font-size: 15px; /* example adjustment */
+    }
+
+    .featureButton p{
+      font-size: 13px;
+    }
+
+    .item2 h1,
+    .item3 h1,
+    .item5 h1 {
+      font-size: 30px; /* example adjustment */
+    }
+
+    
+    /* Example: reduce spiral overlay text for smaller screens */
+    .spiralOverlay h1 {
+      font-size: 32px;
+    }
+  }
+  

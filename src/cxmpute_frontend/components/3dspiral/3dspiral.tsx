@@ -35,7 +35,7 @@ export default function Spiral() {
           <sphereGeometry args={[0.2, 64, 64]} />
           <meshPhysicalMaterial depthWrite={false} transmission={1} thickness={10} roughness={0.65} />
         </mesh>
-        <OrbitControls />
+        {/* <OrbitControls /> */}
         <pointLight position={[10, 10, 5]} />
         <pointLight position={[-10, -10, -5]} color={colorA} />
         <ambientLight intensity={0.4} />

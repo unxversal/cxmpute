@@ -405,7 +405,10 @@ export default function Hero({ toggleDashboard }: HeroProps) {
                     </div>
                 </div>
                 <div className={styles.dashFooter}>
-                    <div className={styles.bottombutton}>
+                    <div 
+                    
+                        onClick={() => window.open('https://github.com/unxversal', '_blank')}
+                        className={styles.bottomButton}>
                         Github ✦
                     </div>
                     <div className={styles.bottomButton} onClick={toggleDashboard}>

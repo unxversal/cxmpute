@@ -49,42 +49,12 @@ function App() {
   return (
     <main>
 
-      <div id="left">
-
-        <div id="spiralcontainer">
-          {home && <button id="scrollButton" onClick={() => scrollToRightPage()}>》</button>}
-          <Spiral />
-        </div>
-
-        {/* <div id="overlay">
-          <form action="#" onSubmit={handleSubmit}>
-            <label htmlFor="name">Enter your name: &nbsp;</label>
-            <input id="name" alt="Name" type="text" />
-            <button type="submit">Click Me!</button>
-          </form>
-          <section id="greeting">{greeting}</section>
-        </div> */}
-
-      <div id="overlay"><Overlay /></div>
-      {/* <div id="overlaybox">
-        <div className="homebox">
-          <div id="homeboxHeader">Header</div>
-          <div id="homeboxContent">Content</div>
-          <div id="homeboxFooter">Footer</div>
-        </div>
-      </div> */}
-
-      </div>
-
-      <div id="right">
-       
-        <div id="rightbalancer"></div>
+      
         <div id="rightcontent">
           {!home && <button id="scrollButton2" onClick={() => scrollToLeftPage()}>《</button>}
           {!dashboardOpen && <Hero toggleDashboard={toggleDashboard}  />}
           {dashboardOpen && <Dashboard toggleDashboard={toggleDashboard} />}
         </div>
-      </div>
       
       
       

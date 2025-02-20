@@ -411,7 +411,7 @@ export default function Hero({ toggleDashboard }: HeroProps) {
                         className={styles.bottomButton}>
                         Github ✦
                     </div>
-                    <div className={styles.bottomButton} onClick={toggleDashboard}>
+                    <div className={styles.bottomButton2} onClick={toggleDashboard}>
                         <DecryptedText 
                             text="OPEN CXMPUTE ✦" 
                             className="heroButton"

@@ -6,8 +6,8 @@
 .architectureContainer{
     width: 50%;
     border-left: #575757 solid 0.5px;
-    background-color: #fff;
-    color: black;
+    /* background-color: #fff;
+    color: black; */
     
 }
 
@@ -21,7 +21,7 @@
     font-weight: 100;
     font-size: 28px;
     margin: 0;
-    /* color: wheat; */
+    color: wheat;
     /* color: rgb(163, 106, 0); */
     transition: all 0.3s ease-in-out;
 }
@@ -68,4 +68,19 @@
 .processButton:hover{
     background: wheat;
     color: black;
+}
+
+
+@media screen and (max-width: 1000px) {
+    .architecture{
+        flex-direction: column;
+    }
+
+    .processText{
+        padding: 20px;
+    }
+
+    .architectureContainer{
+        width: 100%;
+    }
 }

@@ -7,7 +7,7 @@ export function Architecture() {
             <div className={styles.processText}>
                 <h1 className={styles.processText2}>Cxmpute Architecture</h1>
                 <button className={styles.processButton} onClick={() => window.open('https://www.joshuaokolo.xyz/blog/cxmputearchitecture', '_blank')}>
-                    Learn More About Cxmpute Architecture
+                    Learn More About the Cxmpute Protocol Architecture
                 </button>
             </div>
             <div className={styles.architectureContainer}>
@@ -24,13 +24,13 @@ export function Architecture() {
                     </p>
                 </div>
                 <div className={styles.architectureStep}>
-                    <h2>Orchestration Network</h2>
+                    <h2>Orchestration Network Layer</h2>
                     <p>
                         Manages requests and matches users with the best providers based on pricing, hardware, and availability. It ensures smooth operation of services like serverless compute, AI inference, and distributed training.
                     </p>
                 </div>
                 <div className={styles.architectureStep}>
-                    <h2>Decentralized Cxmpute Network</h2>
+                    <h2>Provider Network Layer</h2>
                     <p>
                         The core of Cxmpute’s infrastructure. This global network provides scalable, secure computing power for AI inference, serverless apps, and distributed workloads. Providers earn rewards by sharing their resources.
                     </p>

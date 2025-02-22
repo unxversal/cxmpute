@@ -4,6 +4,7 @@ import Spiral from '../components/3dspiral/3dspiral';
 import Overlay from '../components/overlay/overlay';
 import Dashboard from '../components/dashboard/dashboard';
 import Hero from '../components/hero/hero';
+import Process from '../components/process/process';
 
 function App() {
   const [greeting, setGreeting] = useState('');
@@ -35,8 +36,10 @@ function App() {
         <div id="overlay"><Overlay /></div>
       </div>
       
-        {!dashboardOpen && <Hero toggleDashboard={toggleDashboard}  />}
-        {dashboardOpen && <Dashboard toggleDashboard={toggleDashboard} />}
+      {!dashboardOpen && <Hero />}
+      {dashboardOpen && <Dashboard toggleDashboard={toggleDashboard} />}
+
+      <Process />
       
       
       

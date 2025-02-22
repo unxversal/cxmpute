@@ -16,7 +16,23 @@
 }
 
 @media screen and (max-width: 1200px) {
+  .hero{
+    height: 100%;
+    flex-direction: column;
+  }
 
+  .left, .right{
+    width: 100% !important;
+  }
+
+  .left{
+    max-height: 50vh !important;
+  }
+
+  .subtitle{
+    width: 100% !important;
+  }
+  
 }
 
 @media screen and (max-width: 768px) {

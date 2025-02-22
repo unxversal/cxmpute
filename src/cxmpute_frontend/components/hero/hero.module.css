@@ -5,6 +5,7 @@
     justify-content: center;
     align-items: center;
     position: relative;
+    font-family: "Helvetica Neue", Helvetica, sans-serif;
 }
 
 @media screen and (max-width: 400px) {
@@ -22,3 +23,107 @@
 
 }
 
+.left{
+    height: 100%;
+    width: 50%;
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    flex-direction: column;
+    padding: 20px;
+    border-bottom: #575757 solid 0.5px; 
+}
+
+.title{
+  font-weight: 200;
+}
+
+.subtitle{
+    color: #cbcbcb;
+    width: 70%;
+    font-size: 18px;
+}
+
+.description{
+  font-weight: 200;
+  text-align: right;
+  width: 100%;
+  margin: 0;
+  font-size: 18px;
+}
+
+
+.right{
+    height: 100%;
+    width: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+}
+
+.button{
+    background: none;
+    outline: none;
+    border: none;
+    font-size: 18px;
+    color: wheat;
+    font-family: 'Helvetica Neue';
+    font-weight: 100;
+    width: 100%;
+    text-align: end;
+    cursor: pointer;
+    flex: 1 1 50%;
+    padding: 20px;
+    text-align: center;
+    transition: all 0.3s ease-in-out;
+    height: 50%;
+    border-left: #575757 solid 0.5px;
+    border-bottom: #575757 solid 0.5px;
+}
+
+.button:hover{
+    background-color: white;
+    color: black;
+}
+
+.popup{
+  border-left: #575757 solid 0.5px;
+  border-bottom: #575757 solid 0.5px;
+  height: 100%;
+  width: 100%;
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 20px;
+  background-color: white;
+  color: #000;
+}
+
+.popup .subtitle{
+  color: black;
+  text-align: center;
+}
+
+.button2{
+  background: none;
+  outline: none;
+  border: 0;
+  /* border: rgb(255, 166, 0) solid 1px; */
+  width: auto;
+  max-width: 30%;
+  font-size: 18px;
+  color: #ffa600;
+  font-family: 'Helvetica Neue';
+  font-weight: 100;
+  width: 100%;
+  text-align: center;
+  cursor: pointer;
+  transition: all 0.3s ease-in-out;
+}
+
+.button2:hover{
+  color: black;
+}

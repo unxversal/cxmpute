@@ -21,9 +21,15 @@ export default function Spiral() {
   // const colorA = '#28ff43'
   // const colorB = '#272727'
 
+  // dark mode
   const base = '#000000'
   const colorA = '#000000'
   const colorB = '#696969'
+
+  // light mode
+  // const base = '#ffffff'
+  // const colorA = '#a1cfff'
+  // const colorB = '#174278'
 
   
   return (

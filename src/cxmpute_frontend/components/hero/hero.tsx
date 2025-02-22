@@ -220,7 +220,7 @@ export default function Hero({ toggleDashboard }: HeroProps) {
 
     
     return (
-        <div className={styles.hero}>
+        <div className={styles.hero} >
             {/* <div className={styles.left}>
                 <DecryptedText
                     text="CXMPUTE"

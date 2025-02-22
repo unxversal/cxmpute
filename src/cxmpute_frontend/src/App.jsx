@@ -7,7 +7,6 @@ import Hero from '../components/hero/hero';
 
 function App() {
   const [greeting, setGreeting] = useState('');
-  const [home, setHome] = useState(true);
   const [dashboardOpen, setDashboardOpen] = useState(false)
 
   function handleSubmit(event) {
@@ -17,26 +16,6 @@ function App() {
       setGreeting(greeting);
     });
     return false;
-  }
-
-  function scrollToRightPage() {
-    // Scroll horizontally to the right section (if your layout is using 200vw as width)
-    window.scrollTo({
-      left: window.innerWidth,  // Scroll to the right page (200vw width means one full screen shift)
-      behavior: 'smooth'  // Smooth scroll effect
-    });
-
-    setHome(false);
-  }
-
-  function scrollToLeftPage() {
-    // Scroll horizontally to the right section (if your layout is using 200vw as width)
-    window.scrollTo({
-      left: -window.innerWidth,  // Scroll to the right page (200vw width means one full screen shift)
-      behavior: 'smooth'  // Smooth scroll effect
-    });
-
-    setHome(true);
   }
 
   function toggleDashboard() {
@@ -49,13 +28,20 @@ function App() {
   return (
     <main>
 
-      
-        <div id="rightcontent">
-          {!home && <button id="scrollButton2" onClick={() => scrollToLeftPage()}>《</button>}
-          {!dashboardOpen && <Hero toggleDashboard={toggleDashboard}  />}
-          {dashboardOpen && <Dashboard toggleDashboard={toggleDashboard} />}
+      <div id="hero">
+
+        <div id="spiralcontainer">
+          <Spiral />
         </div>
+
+        <div id="overlay"><Overlay /></div>
+
+        
+
+      </div>
       
+        {!dashboardOpen && <Hero toggleDashboard={toggleDashboard}  />}
+        {dashboardOpen && <Dashboard toggleDashboard={toggleDashboard} />}
       
       
       

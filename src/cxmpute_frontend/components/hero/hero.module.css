@@ -12,7 +12,9 @@
 }
 
 @media screen and (max-width: 600px) {
-    
+    .description{
+      display: none;
+    }
 }
 
 @media screen and (max-width: 1200px) {

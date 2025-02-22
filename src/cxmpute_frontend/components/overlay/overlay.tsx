@@ -30,7 +30,10 @@ export const Overlay: React.FC = () => {
         <ul
           className={styles.footerLink}
           onClick={() => {
-            window.open("https://drive.google.com/file/d/1rax3ujJv0Bw7Z30V3s9pDPC1Q0dhCoeG/view", "_blank");
+            const processEl = document.getElementById("process");
+            if (processEl) {
+              processEl.scrollIntoView({ behavior: "smooth" });
+            }
           }}
         >
           <li>JOIN</li>
@@ -38,7 +41,10 @@ export const Overlay: React.FC = () => {
         <ul
           className={styles.footerLink}
           onClick={() => {
-            window.open("https://github.com/unxversal/", "_blank");
+            const processEl = document.getElementById("about");
+            if (processEl) {
+              processEl.scrollIntoView({ behavior: "smooth" });
+            }
           }}
         >
           <li>ABOUT</li>
@@ -46,7 +52,7 @@ export const Overlay: React.FC = () => {
         <ul
           className={styles.footerLink}
           onClick={() => {
-            window.open("https://x.com/cxmpute", "_blank");
+            window.open("https://unxversal.github.io/", "_blank");
           }}
         >
           <li>DOCS</li>

@@ -3,10 +3,15 @@ import * as React from 'react';
 
 const Process = () => {
     return (
-        <div className={styles.process}>
-            <h1 className={styles.processText}>How It Works</h1>
+        <div className={styles.process} id="process">
+            
+            <div className={styles.processText}>
+                <h1 className={styles.processText}>How It Works</h1>
+                <button className={styles.processButton}>Get Started as a User</button>
+                <button className={styles.processButton}>Get Started as a Provider</button>
+            </div>
             <div className={styles.processContainer}>
-                <h1>For Consumers</h1>
+                <h1>For Users</h1>
                 <div className={styles.processStep}>
                     <h2>Step 1</h2>
                     <p>Create an account and load credits. Cxmpute accepts fiat and cryptocurrencies.</p>

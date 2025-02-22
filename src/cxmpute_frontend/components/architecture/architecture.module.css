@@ -1,36 +1,55 @@
-.process{
-    /* height: 60vh; */
-    width: 100%;
+.architecture{
     display: flex;
-    justify-content: center;
-    align-items: flex-start;
-    position: relative;
-    font-family: "Helvetica Neue", Helvetica, sans-serif;
-    padding: 20px;
     justify-content: space-between;
-    border-bottom: #575757 solid 0.5px;
 }
 
-.process h1{
+.architectureContainer{
+    width: 50%;
+    border-left: #575757 solid 0.5px;
+    background-color: #fff;
+    color: black;
+    
+}
+
+.architectureStep{
+    border-bottom: #575757 solid 0.5px;
+    padding: 20px;
+    transition: all 0.3s ease-in-out;
+}
+
+.architectureStep h2{
     font-weight: 100;
     font-size: 28px;
+    margin: 0;
+    /* color: wheat; */
+    /* color: rgb(163, 106, 0); */
+    transition: all 0.3s ease-in-out;
 }
 
-.process h2{
-    font-weight: 100;
-    font-size: 20px;
-    color: wheat;
+.architectureStep h2:hover{
+    color: #151515;
 }
 
-.process p{
+.architectureStep p{
     font-weight: 100;
     font-size: 15px;
-    color: #d3d3d3;
+    
+}
+
+.architectureStep:hover{
+    color: #151515;
+    background-color: #fff;
 }
 
 .processText{
     flex: 1 1 40%;
     font-size: 48px !important;
+    padding: 20px;
+}
+
+.processText2{
+    font-size: 48px !important;
+    font-weight: 100;
 }
 
 .processButton{
@@ -49,24 +68,4 @@
 .processButton:hover{
     background: wheat;
     color: black;
-}
-
-.processContainer{
-    flex: 1 1 30%;
-    padding: 20px;
-    text-align: right;
-}
-
-@media screen and (max-width: 1000px) {
-    .process{
-        flex-direction: column;
-    }
-
-    .processText{
-        padding: 20px;
-    }
-
-    .processContainer{
-        width: 100%;
-    }
 }

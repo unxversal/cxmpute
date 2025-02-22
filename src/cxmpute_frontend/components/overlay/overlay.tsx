@@ -14,10 +14,9 @@ export const Overlay: React.FC = () => {
             <div>
               <div className={styles.hheader}>CXMPUTE</div>
               <br />
-              {/* <div className={styles.description}>
-                Decentralized Compute Infrastructure by{" "}
-                <span className={styles.brand}>UNXVERSAL</span>
-              </div> */}
+              <div className={styles.description}>
+                Use or provide computing power, storage, and more.
+              </div>
               <br />
               <div id="cxmplist" className={styles.cxmplist}>
                 Virtual Machines · Codespaces · AI Training · AI Inference · Databases · AI Agents · Python Notebooks · Serverless · Kubernetes · AI Archive · Vector Search · More

@@ -29,15 +29,10 @@ function App() {
     <main>
 
       <div id="hero">
-
         <div id="spiralcontainer">
           <Spiral />
         </div>
-
         <div id="overlay"><Overlay /></div>
-
-        
-
       </div>
       
         {!dashboardOpen && <Hero toggleDashboard={toggleDashboard}  />}

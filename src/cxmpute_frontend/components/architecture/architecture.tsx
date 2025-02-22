@@ -14,25 +14,25 @@ export function Architecture() {
                 <div className={styles.architectureStep}>
                     <h2>Cxmpute App</h2>
                     <p>
-                        The central hub for all user interactions—providing a seamless interface for accessing services, managing compute workloads, and deploying AI models. The app combines an intuitive UI with powerful APIs, allowing both beginners and experts to leverage Cxmpute’s decentralized computing network effortlessly.
+                        The main hub for users to access services, manage workloads, and deploy AI models. It offers a simple interface and powerful APIs, making it easy for anyone to leverage Cxmpute’s decentralized computing.
                     </p>
                 </div>
                 <div className={styles.architectureStep}>
                     <h2>Financial Layer</h2>
                     <p>
-                        The financial backbone of Cxmpute, designed for flexibility and accessibility. It supports both fiat payments (via Stripe) and stabletokens across popular blockchains, ensuring seamless, cross-chain compatibility. This layer handles transactions, pricing, staking, and rewards—enabling providers and users to engage in a transparent and efficient marketplace.
+                        This layer handles payments, staking, and rewards. It supports both fiat and stabletokens from major blockchains, allowing for seamless, cross-chain transactions.
                     </p>
                 </div>
                 <div className={styles.architectureStep}>
                     <h2>Orchestration Network</h2>
                     <p>
-                        The coordination layer that routes and manages network requests. It matches users with the most suitable compute providers based on pricing, hardware requirements, and availability. This layer also ensures that services such as serverless compute, AI inference, and distributed training run smoothly across the decentralized network.
+                        Manages requests and matches users with the best providers based on pricing, hardware, and availability. It ensures smooth operation of services like serverless compute, AI inference, and distributed training.
                     </p>
                 </div>
                 <div className={styles.architectureStep}>
                     <h2>Decentralized Cxmpute Network</h2>
                     <p>
-                        The heart of the platform—Cxmpute’s decentralized infrastructure connects a global network of providers. From running AI inference to hosting serverless applications, this network delivers scalable, distributed computing power securely and efficiently. Every participant contributes to the network’s resilience while earning rewards for providing valuable resources.
+                        The core of Cxmpute’s infrastructure. This global network provides scalable, secure computing power for AI inference, serverless apps, and distributed workloads. Providers earn rewards by sharing their resources.
                     </p>
                 </div>
             </div>

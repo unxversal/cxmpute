@@ -7,6 +7,8 @@
   color: white;
   z-index: 1;
   overflow: hidden;
+  font-family: 'Helvetica Neue', 'HelveticaNeueLight', Helvetica, sans-serif;
+  font-weight: 100;
 }
 
 /* New class for the inner popup container */
@@ -115,4 +117,23 @@
 .footerLink2:hover{
   background-color: wheat;
   color: black;
+}
+
+@media screen and (min-width: 1000px) and (max-height: 1000px) {
+    .hheader{
+        font-size: 3vw;
+    }
+
+    .description{
+        font-size: 12px;
+    }
+
+    .cxmplist{
+        font-size: 10px !important;
+    }
+
+    .footerLink2{
+        padding: 10px;
+        font-size: 10px;
+    }
 }

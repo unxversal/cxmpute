@@ -60,6 +60,11 @@ form {
   align-items: baseline;
 }
 
+h1, h2{
+  font-family: 'Helvetica Neue', 'HelveticaNeueLight', Helvetica, sans-serif;
+  font-weight: 200;
+}
+
 button[type="submit"] {
   padding: 5px 20px;
   margin: 10px auto;

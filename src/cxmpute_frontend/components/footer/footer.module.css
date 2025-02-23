@@ -1,11 +1,56 @@
 .footerContainer{
     width: 100%;
-    height: 60vh;
-    padding: 20px;
+    height: 40vh;
     display: flex;
+    justify-content: space-between;
+    gap: 20px;
+    padding: 20px;
 }
 
 .footerContainer li{
     list-style: none;
     cursor: pointer;
+}
+
+.footerLink li{
+    padding: 10px;
+    font-size: 20px;
+    color: wheat;
+    /* border: wheat solid 0.5px; */
+    /* margin-bottom: 10px; */
+    transition: all 0.3s ease-in-out;
+    text-align: right;
+}
+
+/* .footerLink li:hover{
+    background-color: wheat;
+    color: black;
+} */
+
+.footerLink{
+    padding: 0;
+    margin: 0;
+}
+
+.footerButtons{
+    display: flex;
+    gap: 0;
+}
+
+.footerText2{
+    padding: 0;
+    margin: 0;
+}
+
+@media screen and (max-width: 1000px) {
+
+    .footerContainer{
+        flex-direction: column;
+    }
+
+    .footerButtons{
+        flex-direction: column;
+    }
+
+
 }

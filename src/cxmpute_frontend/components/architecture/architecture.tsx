@@ -1,7 +1,7 @@
 import styles from './architecture.module.css';
 import * as React from 'react';
 
-export function Architecture() {
+export default function Architecture() {
     return (
         <div className={styles.architecture}>
             <div className={styles.processText}>

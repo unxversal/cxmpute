@@ -5,7 +5,8 @@ import Overlay from '../components/overlay/overlay';
 import Dashboard from '../components/dashboard/dashboard';
 import Hero from '../components/hero/hero';
 import Process from '../components/process/process';
-import { Architecture } from '../components/architecture/architecture';
+import Architecture from '../components/architecture/architecture';
+import Roadmap from '../components/roadmap/roadmap';
 
 function App() {
   const [greeting, setGreeting] = useState('');
@@ -42,6 +43,7 @@ function App() {
 
       <Process />
       <Architecture />
+      <Roadmap />
       
       
       

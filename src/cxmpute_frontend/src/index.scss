@@ -4,13 +4,13 @@
 }
 
 @font-face {
-  font-family: BoteraStencil;
-  src: url("/Botera-RegularStencil.otf") format("opentype");
+  font-family: Potra;
+  src: url("/Potra.otf") format("opentype");
 }
 
 @font-face {
-  font-family: Potra;
-  src: url("/Potra.otf") format("opentype");
+  font-family: 'HelveticaNeueLight';
+  src: url('./HelveticaNeueUltraLight.otf') format('opentype');
 }
 
 main{
@@ -33,7 +33,7 @@ main{
 }
 
 body {
-  font-family: 'Helvetica Neue', Helvetica, sans-serif;
+  font-family: 'Helvetica Neue', 'HelveticaNeueLight', Helvetica, sans-serif;
   font-weight: 200;
   color: white;
   font-size: 1.5rem;

@@ -26,6 +26,7 @@ export const Overlay: React.FC = () => {
         </div>
       </div>
 
+
       <footer className={styles.footerContainer}>
         <ul
           className={styles.footerLink}
@@ -59,32 +60,17 @@ export const Overlay: React.FC = () => {
         </ul>
       </footer>
 
-      {/* <footer className={styles.footerContainer2}>
+      <footer className={styles.footerContainer2}>
         <ul
-          className={styles.footerLink}
+          className={styles.footerLink2}
           onClick={() => {
-            window.open("https://drive.google.com/file/d/1rax3ujJv0Bw7Z30V3s9pDPC1Q0dhCoeG/view", "_blank");
+            window.open("https://www.joshuaokolo.xyz/blog/cxmpute101", "_blank");
           }}
         >
-          <li>X PROVIDERS</li>
+          <li>CXMPUTE IN 90 SECONDS</li>
         </ul>
-        <ul
-          className={styles.footerLink}
-          onClick={() => {
-            window.open("https://github.com/unxversal/", "_blank");
-          }}
-        >
-          <li>X GB CXMPUTE</li>
-        </ul>
-        <ul
-          className={styles.footerLink}
-          onClick={() => {
-            window.open("https://x.com/cxmpute", "_blank");
-          }}
-        >
-          <li>X SERVICES</li>
-        </ul>
-      </footer> */}
+
+      </footer>
 
       
     </div>

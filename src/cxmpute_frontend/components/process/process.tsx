@@ -7,8 +7,22 @@ const Process = () => {
             
             <div className={styles.processText}>
                 <h1 className={styles.processText}>How It Works</h1>
-                <button className={styles.processButton}>Get Started as a User</button>
-                <button className={styles.processButton}>Get Started as a Provider</button>
+                <button className={styles.processButton}
+                    onClick={() => {
+                        const processEl = document.getElementById("roadmap");
+                        if (processEl) {
+                          processEl.scrollIntoView({ behavior: "smooth" });
+                        }
+                      }}
+                >Get Started as a User</button>
+                <button className={styles.processButton}
+                    onClick={() => {
+                        const processEl = document.getElementById("roadmap");
+                        if (processEl) {
+                          processEl.scrollIntoView({ behavior: "smooth" });
+                        }
+                      }}
+                >Get Started as a Provider</button>
             </div>
             <div className={styles.processContainer}>
                 <h1>For Users</h1>

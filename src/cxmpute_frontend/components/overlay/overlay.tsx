@@ -26,7 +26,6 @@ export const Overlay: React.FC = () => {
         </div>
       </div>
 
-
       <footer className={styles.footerContainer}>
         <ul
           className={styles.footerLink}

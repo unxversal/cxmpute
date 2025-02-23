@@ -41,12 +41,7 @@ export const Overlay: React.FC = () => {
         </ul>
         <ul
           className={styles.footerLink}
-          onClick={() => {
-            const processEl = document.getElementById("about");
-            if (processEl) {
-              processEl.scrollIntoView({ behavior: "smooth" });
-            }
-          }}
+          onClick={() => window.open('https://www.joshuaokolo.xyz/blog/cxmpute101', '_blank')}
         >
           <li>ABOUT</li>
         </ul>

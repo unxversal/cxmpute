@@ -14,12 +14,17 @@ export default function Footer({ toggleDashboard }: FooterProps) {
             <div className={styles.footerButtons}>
                 <ul
                     className={styles.footerLink}
-                    onClick={() => {
-                        window.location.href = 'https://github.com/cxmpute/cxmpute';
-                    }}
                 >
-                    <li>GET STARTED AS A PROVIDER</li>
-                    <li>GET STARTED AS A USER</li>
+                    <li
+                        onClick={() => {
+                            window.open('https://tally.so/r/mKW2lk', '_blank');
+                        }}
+                    >GET STARTED AS A PROVIDER</li>
+                    <li
+                        onClick={() => {
+                            window.open('https://tally.so/r/w86DQY', '_blank');
+                        }}
+                    >GET STARTED AS A USER</li>
                     <li>GET UPDATES</li>
                 </ul>
                 <ul className={styles.footerLink}>

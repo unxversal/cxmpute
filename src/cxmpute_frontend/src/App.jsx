@@ -7,6 +7,7 @@ import Hero from '../components/hero/hero';
 import Process from '../components/process/process';
 import Architecture from '../components/architecture/architecture';
 import Roadmap from '../components/roadmap/roadmap';
+import Footer from '../components/footer/footer';
 
 function App() {
   const [greeting, setGreeting] = useState('');
@@ -31,19 +32,24 @@ function App() {
   return (
     <main>
 
-      <div id="hero">
-        <div id="spiralcontainer">
-          <Spiral />
+      {!dashboardOpen && 
+      <>
+        <div id="hero">
+          <div id="spiralcontainer">
+            <Spiral />
+          </div>
+          <div id="overlay"><Overlay /></div>
         </div>
-        <div id="overlay"><Overlay /></div>
-      </div>
-      
-      {!dashboardOpen && <Hero />}
-      {dashboardOpen && <Dashboard toggleDashboard={toggleDashboard} />}
+        
+        <Hero />
 
-      <Process />
-      <Architecture />
-      <Roadmap />
+        <Process />
+        <Architecture />
+        <Roadmap />
+        <Footer toggleDashboard={toggleDashboard}  />
+      </>}
+
+      {dashboardOpen && <Dashboard toggleDashboard={toggleDashboard} />}
       
       
       
